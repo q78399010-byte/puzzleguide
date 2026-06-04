@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --header-bg: #0f2f60;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #132033;
+  font-family: Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.top-shell {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(28, 126, 214, 0.26), transparent 28rem),
+    linear-gradient(135deg, #102b55 0%, #163f78 52%, #0e2b5f 100%);
+}
+
+.container-page {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.content-card {
+  border: 1px solid #d9e1ec;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 14px 35px rgba(16, 35, 71, 0.08);
+}
+
+.subtle-card {
+  border: 1px solid #d9e1ec;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.game-art {
+  position: relative;
+  overflow: hidden;
+  background: #eaf1f8;
+}
+
+.game-art::before,
+.game-art::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.44);
+}
+
+.game-art::before {
+  width: 96px;
+  height: 96px;
+  top: -26px;
+  right: -18px;
+}
+
+.game-art::after {
+  width: 54px;
+  height: 54px;
+  bottom: 18px;
+  left: 18px;
+}
