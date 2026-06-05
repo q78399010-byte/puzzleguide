@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { existsSync } from "node:fs";
+import path from "node:path";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AdSlot } from "@/components/ad-slot";
@@ -6,6 +8,7 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { LevelList } from "@/components/level-list";
 import { SeoJsonLd } from "@/components/seo-jsonld";
 import { SectionHeading } from "@/components/section-heading";
+import { getGameMedia } from "@/data/game-media";
 import { levels } from "@/data/levels";
 import {
   getFeaturedLevelManualContent,
@@ -237,6 +240,47 @@ const manualLevelContentByPath: Record<string, ManualLevelContent> = {
   }
 };
 
+const publicRoot = path.join(process.cwd(), "public");
+
+function isHttpsUrl(value: string) {
+  try {
+    return new URL(value).protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+function localPublicFileExists(urlPath: string, requiredPrefix: "/images/" | "/gifs/") {
+  const normalizedPath = path.posix.normalize(urlPath);
+
+  if (!normalizedPath.startsWith(requiredPrefix)) {
+    return false;
+  }
+
+  const resolvedPath = path.resolve(publicRoot, normalizedPath.slice(1));
+
+  if (!resolvedPath.startsWith(`${publicRoot}${path.sep}`)) {
+    return false;
+  }
+
+  return existsSync(resolvedPath);
+}
+
+function isRenderableMediaUrl(
+  url: string | null,
+  requiredPrefix: "/images/" | "/gifs/"
+) {
+  if (!url) {
+    return false;
+  }
+
+  if (isHttpsUrl(url)) {
+    return true;
+  }
+
+  return localPublicFileExists(url, requiredPrefix);
+}
+
 function getManualLevelContent(gameSlug: string, levelSlug: string) {
   return (
     getFeaturedLevelManualContent(gameSlug, levelSlug) ??
@@ -276,6 +320,7 @@ export async function generateMetadata({ params }: LevelPageProps): Promise<Meta
       openGraph: {
         title,
         description: manualContent.metaDescription,
+        url: routes.level(level.gameSlug, level.levelSlug),
         type: "article"
       }
     };
@@ -302,6 +347,15 @@ export default async function LevelDetailPage({ params }: LevelPageProps) {
   const pageTips = manualContent?.proTips ?? level.tips;
   const pageMistakes = manualContent?.commonMistakes ?? level.commonMistakes;
   const pageFaq = manualContent?.faq ?? level.faq;
+  const media = getGameMedia(game.slug, level.levelNumber);
+  const youtubeEmbedUrl = media?.youtubeEmbedUrl ?? null;
+  const imageUrl = isRenderableMediaUrl(media?.imageUrl ?? null, "/images/")
+    ? media?.imageUrl ?? null
+    : null;
+  const gifUrl = isRenderableMediaUrl(media?.gifUrl ?? null, "/gifs/")
+    ? media?.gifUrl ?? null
+    : null;
+  const hasMedia = Boolean(youtubeEmbedUrl || imageUrl || gifUrl);
   const pageGoal =
     manualContent?.goal ??
     `The goal of ${game.name} Level ${level.levelNumber} is to create working space before forcing the main clear. Open the safest lane first, protect one reserve move, and only start the final sequence when the blocker has a clean route.`;
@@ -415,6 +469,51 @@ export default async function LevelDetailPage({ params }: LevelPageProps) {
               </div>
             </dl>
           </header>
+
+          {hasMedia ? (
+            <section className="mt-6 content-card p-6 sm:p-8">
+              <h2 className="text-2xl font-black text-ink">Visual Guide</h2>
+              <div className="mt-5 grid gap-5">
+                {youtubeEmbedUrl ? (
+                  <div className="aspect-video overflow-hidden rounded-2xl border border-line bg-paper">
+                    <iframe
+                      className="h-full w-full"
+                      src={youtubeEmbedUrl}
+                      title={`${game.name} Level ${level.levelNumber} video walkthrough`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    />
+                  </div>
+                ) : null}
+
+                {imageUrl ? (
+                  <img
+                    className="w-full rounded-2xl border border-line bg-paper object-cover"
+                    src={imageUrl}
+                    alt={
+                      media?.imageAlt ??
+                      `${game.name} Level ${level.levelNumber} screenshot`
+                    }
+                    loading="lazy"
+                  />
+                ) : null}
+
+                {gifUrl ? (
+                  <img
+                    className="w-full rounded-2xl border border-line bg-paper object-cover"
+                    src={gifUrl}
+                    alt={
+                      media?.imageAlt ??
+                      `${game.name} Level ${level.levelNumber} animated walkthrough`
+                    }
+                    loading="lazy"
+                  />
+                ) : null}
+              </div>
+            </section>
+          ) : null}
 
           {manualContent ? (
             <>

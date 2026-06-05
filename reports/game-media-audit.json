@@ -1,0 +1,129 @@
+{
+  "totalItems": 5,
+  "validItems": 0,
+  "warningItems": 5,
+  "failedItems": 0,
+  "missingMediaItems": [
+    {
+      "key": "color-wood-jam/level-245",
+      "gameSlug": "color-wood-jam",
+      "levelNumber": 245,
+      "status": "warning",
+      "warnings": [
+        "imageUrl points to a site-local file that does not exist yet",
+        "no renderable media is present for this item"
+      ],
+      "issues": []
+    },
+    {
+      "key": "screw-jam/level-311",
+      "gameSlug": "screw-jam",
+      "levelNumber": 311,
+      "status": "warning",
+      "warnings": [
+        "imageUrl points to a site-local file that does not exist yet",
+        "no renderable media is present for this item"
+      ],
+      "issues": []
+    },
+    {
+      "key": "water-sort/level-245",
+      "gameSlug": "water-sort",
+      "levelNumber": 245,
+      "status": "warning",
+      "warnings": [
+        "imageUrl points to a site-local file that does not exist yet",
+        "no renderable media is present for this item"
+      ],
+      "issues": []
+    },
+    {
+      "key": "parking-jam/level-465",
+      "gameSlug": "parking-jam",
+      "levelNumber": 465,
+      "status": "warning",
+      "warnings": [
+        "imageUrl points to a site-local file that does not exist yet",
+        "no renderable media is present for this item"
+      ],
+      "issues": []
+    },
+    {
+      "key": "ball-sort-puzzle/level-600",
+      "gameSlug": "ball-sort-puzzle",
+      "levelNumber": 600,
+      "status": "warning",
+      "warnings": [
+        "imageUrl points to a site-local file that does not exist yet",
+        "no renderable media is present for this item"
+      ],
+      "issues": []
+    }
+  ],
+  "invalidYoutubeUrls": [],
+  "invalidImageUrls": [],
+  "invalidGifUrls": [],
+  "invalidSourceTypes": [],
+  "fieldIssues": [],
+  "recommendations": [
+    "Add verified own media files under public/images/levels or public/gifs/levels, or keep media hidden until files exist.",
+    "No blocking media schema issues were found."
+  ],
+  "items": [
+    {
+      "key": "color-wood-jam/level-245",
+      "gameSlug": "color-wood-jam",
+      "levelNumber": 245,
+      "status": "warning",
+      "warnings": [
+        "imageUrl points to a site-local file that does not exist yet",
+        "no renderable media is present for this item"
+      ],
+      "issues": []
+    },
+    {
+      "key": "screw-jam/level-311",
+      "gameSlug": "screw-jam",
+      "levelNumber": 311,
+      "status": "warning",
+      "warnings": [
+        "imageUrl points to a site-local file that does not exist yet",
+        "no renderable media is present for this item"
+      ],
+      "issues": []
+    },
+    {
+      "key": "water-sort/level-245",
+      "gameSlug": "water-sort",
+      "levelNumber": 245,
+      "status": "warning",
+      "warnings": [
+        "imageUrl points to a site-local file that does not exist yet",
+        "no renderable media is present for this item"
+      ],
+      "issues": []
+    },
+    {
+      "key": "parking-jam/level-465",
+      "gameSlug": "parking-jam",
+      "levelNumber": 465,
+      "status": "warning",
+      "warnings": [
+        "imageUrl points to a site-local file that does not exist yet",
+        "no renderable media is present for this item"
+      ],
+      "issues": []
+    },
+    {
+      "key": "ball-sort-puzzle/level-600",
+      "gameSlug": "ball-sort-puzzle",
+      "levelNumber": 600,
+      "status": "warning",
+      "warnings": [
+        "imageUrl points to a site-local file that does not exist yet",
+        "no renderable media is present for this item"
+      ],
+      "issues": []
+    }
+  ]
+}

@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     title: "Discover Puzzle Games | PuzzleMaster",
     description:
       "Find similar puzzle games, relaxing sorting games, brain teasers, walkthrough hubs, and level guides.",
+    url: routes.discover,
     type: "website"
   }
 };

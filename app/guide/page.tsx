@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     title: "Explore Puzzle Guides | PuzzleMaster",
     description:
       "Puzzle guide hub with beginner guides, advanced strategies, hard level guides, and walkthrough collections.",
+    url: routes.guide,
     type: "website"
   }
 };

@@ -1,0 +1,215 @@
+{
+  "totalPages": 1140,
+  "descriptionMissing": 0,
+  "walkthroughMissing": 0,
+  "tipsMissing": 0,
+  "faqMissing": 0,
+  "relatedLevelsMissing": 0,
+  "imageMissing": 1140,
+  "gifMissing": 1140,
+  "youtubeMissing": 1140,
+  "pagesWithAllContent": 0,
+  "pagesWithoutAnyMedia": 1140,
+  "topWeakestPages": [
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-116",
+      "pagePath": "/games/arrows-go/levels/level-116",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-128",
+      "pagePath": "/games/arrows-go/levels/level-128",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-142",
+      "pagePath": "/games/arrows-go/levels/level-142",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-15",
+      "pagePath": "/games/arrows-go/levels/level-15",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-158",
+      "pagePath": "/games/arrows-go/levels/level-158",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-173",
+      "pagePath": "/games/arrows-go/levels/level-173",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-189",
+      "pagePath": "/games/arrows-go/levels/level-189",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-204",
+      "pagePath": "/games/arrows-go/levels/level-204",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-219",
+      "pagePath": "/games/arrows-go/levels/level-219",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-231",
+      "pagePath": "/games/arrows-go/levels/level-231",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-245",
+      "pagePath": "/games/arrows-go/levels/level-245",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-260",
+      "pagePath": "/games/arrows-go/levels/level-260",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-277",
+      "pagePath": "/games/arrows-go/levels/level-277",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-28",
+      "pagePath": "/games/arrows-go/levels/level-28",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-291",
+      "pagePath": "/games/arrows-go/levels/level-291",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-305",
+      "pagePath": "/games/arrows-go/levels/level-305",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-318",
+      "pagePath": "/games/arrows-go/levels/level-318",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-335",
+      "pagePath": "/games/arrows-go/levels/level-335",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-349",
+      "pagePath": "/games/arrows-go/levels/level-349",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    },
+    {
+      "gameSlug": "arrows-go",
+      "levelSlug": "level-366",
+      "pagePath": "/games/arrows-go/levels/level-366",
+      "missingFields": [
+        "image",
+        "gif",
+        "youtube"
+      ]
+    }
+  ]
+}

@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     title: "Compare Puzzle Games | PuzzleMaster",
     description:
       "Puzzle game comparisons by difficulty, gameplay, levels, replay value, and walkthrough coverage.",
+    url: routes.compare,
     type: "website"
   }
 };

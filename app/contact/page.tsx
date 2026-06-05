@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: "Contact PuzzleMaster",
     description:
       "Send walkthrough corrections, puzzle guide feedback, site questions, and content requests.",
+    url: "/contact",
     type: "article"
   }
 };
@@ -38,7 +39,7 @@ export default function ContactPage() {
             recover quickly.
           </p>
           <p>
-            Contact email: <span className="font-bold text-ink">hello@puzzlemaster.example.com</span>
+            Contact email: <span className="font-bold text-ink">hello@www.puzzleguide.org</span>
           </p>
         </div>
       </article>

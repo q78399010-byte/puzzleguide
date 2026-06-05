@@ -6,6 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "audit:content": "node scripts/audit-upgraded-content.ts",
+    "audit:media": "node scripts/audit-game-media.ts",
+    "content:audit": "node scripts/content-audit.ts",
+    "media:checklist": "node scripts/generate-media-checklist.ts",
     "start": "next start"
   },
   "dependencies": {

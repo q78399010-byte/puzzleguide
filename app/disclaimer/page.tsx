@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: "Disclaimer | PuzzleMaster",
     description:
       "Disclaimer for independent puzzle walkthroughs, game names, accuracy, and unofficial guide content.",
+    url: "/disclaimer",
     type: "article"
   }
 };

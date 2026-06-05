@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Puzzle Game Walkthroughs | PuzzleMaster",
     description: "Puzzle walkthrough pages by game with level guide links.",
+    url: routes.walkthroughs,
     type: "website"
   }
 };

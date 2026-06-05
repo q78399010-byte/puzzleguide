@@ -19,6 +19,7 @@ export function gameMetadata(game: Game): Metadata {
     openGraph: {
       title,
       description,
+      url: routes.game(game.slug),
       type: "article"
     }
   };
@@ -37,6 +38,7 @@ export function levelMetadata(level: LevelGuide): Metadata {
     openGraph: {
       title,
       description,
+      url: routes.level(level.gameSlug, level.levelSlug),
       type: "article"
     }
   };

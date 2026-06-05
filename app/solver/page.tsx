@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     title: "Puzzle Guide Finder | PuzzleMaster",
     description:
       "Find puzzle game walkthrough hubs, level guides, tips, and solution pages.",
+    url: "/solver",
     type: "article"
   }
 };

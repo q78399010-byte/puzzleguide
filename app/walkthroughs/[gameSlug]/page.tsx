@@ -46,6 +46,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
+      url: routes.walkthrough(game.slug),
       type: "article"
     }
   };

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: "About PuzzleMaster",
     description:
       "Independent written puzzle game walkthroughs, level guides, tips, and related puzzle content.",
+    url: "/about",
     type: "article"
   }
 };

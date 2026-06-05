@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy | PuzzleMaster",
     description:
       "Information about PuzzleMaster site analytics, advertising, cookies, and contact data.",
+    url: "/privacy-policy",
     type: "article"
   }
 };
@@ -50,7 +51,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-xl font-black text-ink">Contact</h2>
             <p className="mt-2">
-              For privacy questions, contact hello@puzzlemaster.example.com.
+              For privacy questions, contact hello@www.puzzleguide.org.
             </p>
           </section>
         </div>

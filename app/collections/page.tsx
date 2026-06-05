@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     title: "Puzzle Game Collections | PuzzleMaster",
     description:
       "Curated puzzle game lists with walkthrough hubs, related games, and level guide collections.",
+    url: routes.collections,
     type: "website"
   }
 };

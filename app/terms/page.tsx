@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: "Terms of Use | PuzzleMaster",
     description:
       "Terms for using PuzzleMaster walkthrough pages, site content, and external links.",
+    url: "/terms",
     type: "article"
   }
 };

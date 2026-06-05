@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     title: "PuzzleMaster | Puzzle Game Walkthroughs & Level Guides",
     description:
       "Search written puzzle walkthroughs, level guides, tips, and related puzzle game pages.",
+    url: "/",
     type: "website"
   }
 };

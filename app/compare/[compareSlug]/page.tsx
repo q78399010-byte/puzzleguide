@@ -49,6 +49,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
+      url: routes.comparison(comparison.slug),
       type: "article"
     }
   };

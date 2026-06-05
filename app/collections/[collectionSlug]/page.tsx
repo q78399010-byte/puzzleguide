@@ -51,6 +51,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
+      url: routes.collection(collection.slug),
       type: "article"
     }
   };

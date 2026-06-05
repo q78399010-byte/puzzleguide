@@ -9,7 +9,7 @@ import { routes } from "@/lib/routes";
 
 export const dynamic = "force-static";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://puzzlemaster.example.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.puzzleguide.org";
 
 function absolute(path: string) {
   return `${siteUrl}${path}`;
