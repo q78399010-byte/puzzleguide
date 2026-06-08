@@ -113,6 +113,21 @@ summary::-webkit-details-marker {
   display: none;
 }
 
+details[open] .faq-panel {
+  animation: faq-reveal 180ms ease-out;
+}
+
+@keyframes faq-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 ::selection {
   background: rgba(31, 111, 209, 0.18);
   color: #132033;

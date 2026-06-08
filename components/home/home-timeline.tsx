@@ -2,7 +2,7 @@ import { homeTimeline } from "@/components/home/home-data";
 
 export function HomeHowItWorks() {
   return (
-    <section className="relative isolate overflow-hidden py-32">
+    <section className="relative isolate overflow-hidden py-24">
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(135deg,rgba(59,130,246,0.06),rgba(255,255,255,0.95),rgba(139,92,246,0.08))]" />
       <div className="container-page">
         <div className="max-w-5xl">
@@ -14,11 +14,11 @@ export function HomeHowItWorks() {
           </h2>
         </div>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {homeTimeline.map((item, index) => (
             <article
               key={item.step}
-              className="relative rounded-3xl border border-white/40 bg-white/75 p-8 shadow-xl shadow-slate-900/5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              className="relative rounded-2xl border border-white/40 bg-white/75 p-6 shadow-xl shadow-slate-900/5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
             >
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-action via-sky-500 to-violet-500 text-sm font-bold text-white shadow-lg shadow-blue-500/20">
@@ -34,8 +34,14 @@ export function HomeHowItWorks() {
                 </div>
               </div>
 
-              <div className="mt-8 space-y-4">
-                <div className="h-px w-full bg-gradient-to-r from-action/40 via-slate-200 to-transparent" />
+              <div className="mt-6 space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="h-px flex-1 bg-gradient-to-r from-action/50 via-slate-200 to-transparent" />
+                  <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white shadow-sm">
+                    <span className="block h-1.5 w-1.5 rounded-full bg-action" />
+                  </div>
+                  <div className="h-px flex-1 bg-gradient-to-r from-slate-200 via-slate-200 to-transparent" />
+                </div>
                 <p className="text-base leading-7 text-muted">{item.description}</p>
               </div>
             </article>

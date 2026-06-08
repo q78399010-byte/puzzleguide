@@ -42,7 +42,8 @@ export function SiteFooter() {
         { label: "Collections", href: routes.collections },
         { label: "Discover", href: routes.discover },
         { label: "Solver", href: routes.solver },
-        { label: "FAQ", href: "/#faq" }
+        { label: "FAQ", href: "/#faq" },
+        { label: "Sitemap", href: "/sitemap.xml" }
       ]
     },
     {
@@ -72,7 +73,7 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 xl:grid-cols-5">
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
           {footerSections.map((section) => (
             <div
               key={section.title}
@@ -81,7 +82,7 @@ export function SiteFooter() {
               <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-ink">
                 {section.title}
               </h2>
-              <div className="mt-5 grid gap-3 text-sm font-medium text-muted">
+              <div className="mt-4 grid gap-2.5 text-sm font-medium text-muted">
                 {section.links.map((label) => (
                   <Link
                     key={`${section.title}-${label.label}`}
@@ -100,17 +101,15 @@ export function SiteFooter() {
         <div className="container-page flex flex-col gap-4 py-6 text-xs font-semibold text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>(c) 2026 PuzzleMaster. Unofficial game walkthrough index.</p>
           <div className="flex flex-wrap gap-4">
-            {siteLinks
-              .filter((item) => !["About", "Contact"].includes(item.label))
-              .map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="transition hover:text-action"
-                >
-                  {item.label}
-                </Link>
-              ))}
+            {siteLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="transition hover:text-action"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

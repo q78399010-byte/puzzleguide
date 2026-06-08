@@ -7,7 +7,7 @@ type SearchBoxProps = {
 };
 
 export function SearchBox({
-  placeholder = "Search games or levels",
+  placeholder = "Search game or level",
   initialQuery = "",
   buttonLabel = "Search",
   compact = false,
@@ -26,7 +26,7 @@ export function SearchBox({
         defaultValue={initialQuery}
         placeholder={placeholder}
         className={`min-w-0 flex-1 rounded-full bg-transparent px-5 text-ink outline-none placeholder:text-muted ${
-          compact ? "h-10 text-sm" : "h-12 text-base sm:h-14"
+          compact ? "h-10 text-sm" : "h-12 text-sm sm:h-14 sm:text-base"
         } ${compact ? "" : "w-full"}`}
       />
       <button
