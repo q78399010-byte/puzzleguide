@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Terms of Use | PuzzleMaster",
@@ -19,6 +20,12 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <main className="container-page py-12">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "/" },
+          { name: "Terms of Use", item: "/terms" }
+        ]}
+      />
       <article className="content-card p-6 sm:p-8">
         <p className="text-xs font-black uppercase tracking-[0.16em] text-mint">
           Terms

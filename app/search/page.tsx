@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { SearchResults } from "@/components/search-results";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Search Game Walkthroughs, Solutions & Levels | PuzzleMaster",
@@ -14,6 +15,12 @@ export const metadata: Metadata = {
 export default function SearchPage() {
   return (
     <main className="container-page py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "/" },
+          { name: "Search", item: "/search" }
+        ]}
+      />
       <section className="mb-8">
         <p className="text-xs font-black uppercase tracking-[0.16em] text-mint">
           Search

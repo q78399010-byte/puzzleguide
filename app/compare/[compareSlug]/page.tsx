@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GameGrid } from "@/components/game-grid";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { FaqJsonLd } from "@/components/seo/faq-json-ld";
 import { comparisons } from "@/data/comparisons";
 import {
   getComparisonBySlug,
@@ -73,6 +75,14 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
 
   return (
     <main className="container-page py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          { name: "Compare", item: routes.compare },
+          { name: comparison.title, item: routes.comparison(comparison.slug) }
+        ]}
+      />
+      <FaqJsonLd faq={comparison.faq} />
       <section className="content-card overflow-hidden">
         <div className="top-shell p-6 text-white sm:p-10">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-50">

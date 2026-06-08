@@ -3,6 +3,7 @@ import Link from "next/link";
 import { GameGrid } from "@/components/game-grid";
 import { SearchBox } from "@/components/search-box";
 import { SectionHeading } from "@/components/section-heading";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 import { categories } from "@/data/categories";
 import { getAllGames } from "@/lib/data";
 import { routes } from "@/lib/routes";
@@ -21,6 +22,12 @@ export default function GamesPage() {
 
   return (
     <main className="container-page py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          { name: "Games", item: routes.games }
+        ]}
+      />
       <div className="content-card overflow-hidden">
         <div className="bg-paper p-6 sm:p-8">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-mint">

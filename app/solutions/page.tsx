@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SeoJsonLd } from "@/components/seo-jsonld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { FaqJsonLd } from "@/components/seo/faq-json-ld";
+import { solutionsIndexFaq } from "@/data/faq-pages";
 import { getAllGames } from "@/lib/data";
 import { routes } from "@/lib/routes";
 
@@ -21,24 +23,16 @@ export const metadata: Metadata = {
 
 export default function SolutionsIndexPage() {
   const games = getAllGames().sort((a, b) => b.popularity - a.popularity);
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What are PuzzleMaster solution pages?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Solution pages group game-specific walkthrough summaries, step-by-step solution notes, tips, common mistakes, and related levels."
-        }
-      }
-    ]
-  };
 
   return (
     <main className="container-page py-10">
-      <SeoJsonLd data={jsonLd} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          { name: "Solutions", item: routes.solutions }
+        ]}
+      />
+      <FaqJsonLd faq={solutionsIndexFaq} />
       <section className="content-card p-6 sm:p-8">
         <h1 className="text-4xl font-black text-ink">Puzzle Game Solutions</h1>
         <p className="mt-4 max-w-3xl leading-8 text-muted">

@@ -6,6 +6,8 @@ import { notFound } from "next/navigation";
 import { AdSlot } from "@/components/ad-slot";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { LevelList } from "@/components/level-list";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { FaqJsonLd } from "@/components/seo/faq-json-ld";
 import { SeoJsonLd } from "@/components/seo-jsonld";
 import { SectionHeading } from "@/components/section-heading";
 import { getGameMedia } from "@/data/game-media";
@@ -378,46 +380,6 @@ export default async function LevelDetailPage({ params }: LevelPageProps) {
           name: "PuzzleMaster"
         },
         mainEntityOfPage: routes.level(game.slug, level.levelSlug)
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: routes.home
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Games",
-            item: routes.games
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: game.name,
-            item: routes.game(game.slug)
-          },
-          {
-            "@type": "ListItem",
-            position: 4,
-            name: `Level ${level.levelNumber}`,
-            item: routes.level(game.slug, level.levelSlug)
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: pageFaq.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: item.answer
-          }
-        }))
       }
     ]
   };
@@ -425,6 +387,18 @@ export default async function LevelDetailPage({ params }: LevelPageProps) {
   return (
     <main className="container-page py-10">
       <SeoJsonLd data={jsonLd} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          { name: "Games", item: routes.games },
+          { name: game.name, item: routes.game(game.slug) },
+          {
+            name: `Level ${level.levelNumber}`,
+            item: routes.level(game.slug, level.levelSlug)
+          }
+        ]}
+      />
+      <FaqJsonLd faq={pageFaq} />
       <Breadcrumb
         items={[
           { label: "Home", href: routes.home },

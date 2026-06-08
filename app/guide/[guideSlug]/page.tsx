@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LevelList } from "@/components/level-list";
-import { SeoJsonLd } from "@/components/seo-jsonld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { FaqJsonLd } from "@/components/seo/faq-json-ld";
+import { guideDetailFaq } from "@/data/faq-pages";
 import { buildGuideSlug, guideTitle, guideTypes, parseGuideSlug } from "@/data/guides";
 import { getAllGames, getGameBySlug, getLevelsByGame, getPopularLevels } from "@/lib/data";
 import { routes } from "@/lib/routes";
@@ -66,32 +68,18 @@ export default async function GuideDetailPage({ params }: GuideDetailPageProps) 
   const levels = getLevelsByGame(game.slug);
   const popularLevels = getPopularLevels(6, game.slug);
   const title = guideTitle(game, parsed.guideType);
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `What is included in this ${game.name} guide?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The guide includes a walkthrough summary, step planning, tips, common mistakes, related levels, and links to PuzzleMaster game pages."
-        }
-      },
-      {
-        "@type": "Question",
-        name: `Is this guide useful for ${game.name} hard levels?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. The guide explains safe openings, blocker timing, and related hard levels when players need exact move order."
-        }
-      }
-    ]
-  };
+  const faq = guideDetailFaq(game.name);
 
   return (
     <main className="container-page py-10">
-      <SeoJsonLd data={jsonLd} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          { name: "Guide", item: routes.guide },
+          { name: title, item: routes.guideDetail(guideSlug) }
+        ]}
+      />
+      <FaqJsonLd faq={faq} />
       <section className="content-card overflow-hidden">
         <div className="top-shell p-6 text-white sm:p-10">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-50">

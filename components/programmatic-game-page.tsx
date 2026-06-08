@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { LevelList } from "@/components/level-list";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { FaqJsonLd } from "@/components/seo/faq-json-ld";
 import { SeoJsonLd } from "@/components/seo-jsonld";
 import type { Game } from "@/data/games";
 import type { ProgrammaticType } from "@/data/programmatic";
 import type { LevelGuide } from "@/data/levels";
+import { programmaticGameFaq } from "@/data/faq-pages";
 import { routes } from "@/lib/routes";
 
 type ProgrammaticGamePageProps = {
@@ -24,12 +27,25 @@ function pathForType(pageType: ProgrammaticType, gameSlug: string) {
   return routes.walkthrough(gameSlug);
 }
 
+function parentForType(pageType: ProgrammaticType) {
+  if (pageType.slug === "solutions") {
+    return { name: "Solutions", item: routes.solutions };
+  }
+
+  if (pageType.slug === "tips") {
+    return { name: "Tips", item: routes.tips };
+  }
+
+  return { name: "Walkthroughs", item: routes.walkthroughs };
+}
+
 export function ProgrammaticGamePage({
   game,
   pageType,
   levels
 }: ProgrammaticGamePageProps) {
   const featuredLevels = levels.slice(0, 8);
+  const faq = programmaticGameFaq(game.name, pageType);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -46,27 +62,6 @@ export function ProgrammaticGamePage({
           "@type": "Organization",
           name: "PuzzleMaster"
         }
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: [
-          {
-            "@type": "Question",
-            name: `Does this page include ${game.name} level guides?`,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Yes. It links to related level pages with static walkthroughs, tips, common mistakes, and FAQ content."
-            }
-          },
-          {
-            "@type": "Question",
-            name: `How do I use this ${game.name} ${pageType.slug} page?`,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Start with the walkthrough summary, review common mistakes, then open a related level guide for exact step-by-step help."
-            }
-          }
-        ]
       }
     ]
   };
@@ -74,6 +69,17 @@ export function ProgrammaticGamePage({
   return (
     <main className="container-page py-10">
       <SeoJsonLd data={jsonLd} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          parentForType(pageType),
+          {
+            name: `${game.name} ${pageType.slug === "tips" ? "Tips" : pageType.singular + "s"}`,
+            item: pathForType(pageType, game.slug)
+          }
+        ]}
+      />
+      <FaqJsonLd faq={faq} />
       <section className="content-card overflow-hidden">
         <div className="top-shell p-6 text-white sm:p-10">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-50">

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SeoJsonLd } from "@/components/seo-jsonld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { FaqJsonLd } from "@/components/seo/faq-json-ld";
+import { guideHubFaq } from "@/data/faq-pages";
 import { guideTypes, buildGuideSlug } from "@/data/guides";
 import { getAllGames } from "@/lib/data";
 import { routes } from "@/lib/routes";
@@ -42,32 +44,16 @@ const moduleDescriptions = [
 
 export default function GuideHubPage() {
   const games = getAllGames().sort((a, b) => b.popularity - a.popularity);
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What is the PuzzleMaster Guide Hub?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The Guide Hub links to beginner guides, advanced strategy guides, hard level guides, and walkthrough collections for every PuzzleMaster game."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "Are guide pages static?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. Guide pages are statically generated for SEO discovery and fast browsing."
-        }
-      }
-    ]
-  };
 
   return (
     <main className="container-page py-10">
-      <SeoJsonLd data={jsonLd} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          { name: "Guide", item: routes.guide }
+        ]}
+      />
+      <FaqJsonLd faq={guideHubFaq} />
       <section className="content-card overflow-hidden">
         <div className="top-shell p-6 text-white sm:p-10">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-50">

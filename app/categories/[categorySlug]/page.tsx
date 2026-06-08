@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { GameGrid } from "@/components/game-grid";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 import { categories } from "@/data/categories";
 import { getCategoryBySlug, getGamesByCategory } from "@/lib/data";
 import { routes } from "@/lib/routes";
@@ -51,6 +52,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <main className="container-page py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          { name: "Games", item: routes.games },
+          { name: category.name, item: routes.category(category.slug) }
+        ]}
+      />
       <Breadcrumb
         items={[
           { label: "Home", href: routes.home },

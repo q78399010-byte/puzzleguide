@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { FaqJsonLd } from "@/components/seo/faq-json-ld";
 import { comparisons } from "@/data/comparisons";
+import { compareIndexFaq } from "@/data/faq-pages";
 import { getGamesBySlugs } from "@/lib/discovery";
 import { routes } from "@/lib/routes";
 
@@ -20,32 +23,16 @@ export const metadata: Metadata = {
   }
 };
 
-const faq = [
-  {
-    question: "How do you compare puzzle games?",
-    answer:
-      "PuzzleMaster compares games using static signals such as difficulty, gameplay style, level design, replay value, and walkthrough coverage."
-  },
-  {
-    question: "Which puzzle game is easier?",
-    answer:
-      "Sorting games such as Water Sort and Ball Sort Puzzle are usually easier for beginners than hard mechanical games."
-  },
-  {
-    question: "Which puzzle game has more levels?",
-    answer:
-      "Level counts vary by game, but PuzzleMaster game hubs include total level estimates and indexed walkthrough pages."
-  },
-  {
-    question: "Which puzzle game is best for beginners?",
-    answer:
-      "Water Sort, Ball Sort Puzzle, Sort It Out, Goods Sort, and Tile Match are good beginner-friendly options."
-  }
-];
-
 export default function ComparePage() {
   return (
     <main className="container-page py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          { name: "Compare", item: routes.compare }
+        ]}
+      />
+      <FaqJsonLd faq={compareIndexFaq} />
       <section className="content-card overflow-hidden">
         <div className="top-shell p-6 text-white sm:p-10">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-50">
@@ -109,7 +96,7 @@ export default function ComparePage() {
       <section className="mt-10 content-card p-6 sm:p-8">
         <h2 className="text-2xl font-black text-ink">FAQ</h2>
         <div className="mt-5 grid gap-4">
-          {faq.map((item) => (
+          {compareIndexFaq.map((item) => (
             <details key={item.question} className="rounded-2xl border border-line p-4">
               <summary className="cursor-pointer font-black text-ink">
                 {item.question}

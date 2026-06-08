@@ -7,7 +7,9 @@
     "build": "next build",
     "audit:content": "node scripts/audit-upgraded-content.ts",
     "audit:media": "node scripts/audit-game-media.ts",
+    "breadcrumb:audit": "node scripts/audit-breadcrumb-schema.ts",
     "content:audit": "node scripts/content-audit.ts",
+    "faq:audit": "node scripts/audit-faq-schema.ts",
     "media:checklist": "node scripts/generate-media-checklist.ts",
     "start": "next start"
   },

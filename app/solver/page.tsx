@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 import { games } from "@/data/games";
 import { routes } from "@/lib/routes";
 
@@ -39,6 +40,12 @@ export default function SolverPage() {
 
   return (
     <main className="container-page py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          { name: "Solver", item: routes.solver }
+        ]}
+      />
       <section className="content-card p-6 sm:p-8">
         <p className="text-xs font-black uppercase tracking-[0.16em] text-mint">
           Guide Finder

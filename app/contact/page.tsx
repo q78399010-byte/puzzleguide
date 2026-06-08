@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Contact PuzzleMaster | Puzzle Walkthrough Feedback",
@@ -19,6 +20,12 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="container-page py-12">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "/" },
+          { name: "Contact", item: "/contact" }
+        ]}
+      />
       <article className="content-card p-6 sm:p-8">
         <p className="text-xs font-black uppercase tracking-[0.16em] text-mint">
           Contact

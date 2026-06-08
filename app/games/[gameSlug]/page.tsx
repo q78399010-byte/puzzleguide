@@ -6,6 +6,8 @@ import { GameGrid } from "@/components/game-grid";
 import { LevelList } from "@/components/level-list";
 import { SearchBox } from "@/components/search-box";
 import { SectionHeading } from "@/components/section-heading";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { FaqJsonLd } from "@/components/seo/faq-json-ld";
 import {
   getAllGames,
   getGameBySlug,
@@ -84,6 +86,14 @@ export default async function GameDetailPage({ params }: GamePageProps) {
 
   return (
     <main className="container-page py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          { name: "Games", item: routes.games },
+          { name: game.name, item: routes.game(game.slug) }
+        ]}
+      />
+      <FaqJsonLd faq={game.faq} />
       <Breadcrumb
         items={[
           { label: "Home", href: routes.home },

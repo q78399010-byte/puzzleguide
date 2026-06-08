@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GameGrid } from "@/components/game-grid";
 import { SectionHeading } from "@/components/section-heading";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { FaqJsonLd } from "@/components/seo/faq-json-ld";
+import { discoverFaq } from "@/data/faq-pages";
 import { getRecommendedGames, getTrendingDiscoveryGames } from "@/lib/discovery";
 import { routes } from "@/lib/routes";
 
@@ -45,34 +48,18 @@ const discoveryTypes = [
   "Hard Level Puzzle Games"
 ];
 
-const faq = [
-  {
-    question: "How do I find similar puzzle games?",
-    answer:
-      "Start with a game you already like, then browse related games by mechanics such as sorting, blocks, traffic, screws, or wood puzzles."
-  },
-  {
-    question: "Which puzzle games are best for beginners?",
-    answer:
-      "Water Sort, Ball Sort Puzzle, Sort It Out, Goods Sort, and Tile Match are good beginner-friendly starting points."
-  },
-  {
-    question: "What are the most popular puzzle games?",
-    answer:
-      "Color Wood Jam, Screw Jam, Water Sort, Parking Jam, Brain Test, and Ball Sort Puzzle are strong discovery hubs on PuzzleMaster."
-  },
-  {
-    question: "Are these games free to play?",
-    answer:
-      "Most games in this discovery index are commonly distributed as mobile puzzle games with free-to-play models, but availability can vary by store and region."
-  }
-];
-
 export default function DiscoverPage() {
   const trendingGames = getTrendingDiscoveryGames(6);
 
   return (
     <main className="container-page py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          { name: "Discover", item: routes.discover }
+        ]}
+      />
+      <FaqJsonLd faq={discoverFaq} />
       <section className="content-card overflow-hidden">
         <div className="top-shell p-6 text-white sm:p-10">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-50">
@@ -166,7 +153,7 @@ export default function DiscoverPage() {
       <section className="mt-10 content-card p-6 sm:p-8">
         <h2 className="text-2xl font-black text-ink">FAQ</h2>
         <div className="mt-5 grid gap-4">
-          {faq.map((item) => (
+          {discoverFaq.map((item) => (
             <details key={item.question} className="rounded-2xl border border-line p-4">
               <summary className="cursor-pointer font-black text-ink">
                 {item.question}

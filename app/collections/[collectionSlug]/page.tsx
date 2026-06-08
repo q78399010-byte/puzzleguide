@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { GameGrid } from "@/components/game-grid";
 import { LevelList } from "@/components/level-list";
 import { SectionHeading } from "@/components/section-heading";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { FaqJsonLd } from "@/components/seo/faq-json-ld";
 import { collections } from "@/data/collections";
 import {
   getCollectionBySlug,
@@ -83,6 +85,14 @@ export default async function CollectionDetailPage({ params }: CollectionPagePro
 
   return (
     <main className="container-page py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          { name: "Collections", item: routes.collections },
+          { name: collection.title, item: routes.collection(collection.slug) }
+        ]}
+      />
+      <FaqJsonLd faq={collection.faq} />
       <section className="content-card overflow-hidden">
         <div className="top-shell p-6 text-white sm:p-10">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-50">

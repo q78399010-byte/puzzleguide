@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "About PuzzleMaster | Written Puzzle Game Walkthroughs",
@@ -20,6 +21,12 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="container-page py-12">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "/" },
+          { name: "About", item: "/about" }
+        ]}
+      />
       <article className="content-card p-6 sm:p-8">
         <p className="text-xs font-black uppercase tracking-[0.16em] text-mint">
           About

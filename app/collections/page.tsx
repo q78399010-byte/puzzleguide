@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
+import { FaqJsonLd } from "@/components/seo/faq-json-ld";
 import { collections } from "@/data/collections";
+import { collectionsIndexFaq } from "@/data/faq-pages";
 import { getGamesBySlugs } from "@/lib/discovery";
 import { routes } from "@/lib/routes";
 
@@ -20,32 +23,16 @@ export const metadata: Metadata = {
   }
 };
 
-const faq = [
-  {
-    question: "What are puzzle game collections?",
-    answer:
-      "Collections group related puzzle games by theme, difficulty, gameplay style, or search intent."
-  },
-  {
-    question: "How are these games selected?",
-    answer:
-      "Games are selected using static category data, popularity signals, related game links, and walkthrough coverage."
-  },
-  {
-    question: "Do collections include walkthroughs?",
-    answer:
-      "Yes. Each collection links to game hubs where players can browse walkthroughs and level guides."
-  },
-  {
-    question: "Which collection should beginners start with?",
-    answer:
-      "Top Puzzle Games for Beginners and Best Relaxing Puzzle Games are the easiest starting points."
-  }
-];
-
 export default function CollectionsPage() {
   return (
     <main className="container-page py-10">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: routes.home },
+          { name: "Collections", item: routes.collections }
+        ]}
+      />
+      <FaqJsonLd faq={collectionsIndexFaq} />
       <section className="content-card overflow-hidden">
         <div className="top-shell p-6 text-white sm:p-10">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-50">
@@ -109,7 +96,7 @@ export default function CollectionsPage() {
       <section className="mt-10 content-card p-6 sm:p-8">
         <h2 className="text-2xl font-black text-ink">FAQ</h2>
         <div className="mt-5 grid gap-4">
-          {faq.map((item) => (
+          {collectionsIndexFaq.map((item) => (
             <details key={item.question} className="rounded-2xl border border-line p-4">
               <summary className="cursor-pointer font-black text-ink">
                 {item.question}
