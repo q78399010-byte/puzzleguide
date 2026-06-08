@@ -16,9 +16,9 @@ export function LevelList({ levels, showGame = false, ranked = false }: LevelLis
         <Link
           key={`${level.gameSlug}-${level.levelSlug}`}
           href={routes.level(level.gameSlug, level.levelSlug)}
-          className="subtle-card grid gap-4 p-4 transition hover:border-action hover:shadow-soft sm:grid-cols-[auto_1fr_auto] sm:items-center"
+          className="subtle-card grid gap-4 p-5 transition duration-300 hover:-translate-y-1 hover:border-action/30 hover:bg-white hover:shadow-xl sm:grid-cols-[auto_1fr_auto] sm:items-center"
         >
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-50 text-sm font-black text-action">
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-50 text-sm font-bold text-action">
             {ranked ? index + 1 : level.levelNumber}
           </div>
           <div>

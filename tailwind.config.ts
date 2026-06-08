@@ -19,8 +19,8 @@ const config: Config = {
         paper: "#f6f8fb"
       },
       boxShadow: {
-        card: "0 14px 35px rgba(16, 35, 71, 0.08)",
-        soft: "0 8px 22px rgba(16, 35, 71, 0.07)"
+        card: "0 28px 90px rgba(16, 35, 71, 0.13)",
+        soft: "0 16px 44px rgba(16, 35, 71, 0.08)"
       }
     }
   },
