@@ -15,6 +15,13 @@ import { SearchBox } from "@/components/search-box";
 import { SectionHeading } from "@/components/section-heading";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 import { FaqJsonLd } from "@/components/seo/faq-json-ld";
+import { ScrewJamCollections } from "@/components/screw-jam/screw-jam-collections";
+import { ScrewJamCompare } from "@/components/screw-jam/screw-jam-compare";
+import { ScrewJamFaq } from "@/components/screw-jam/screw-jam-faq";
+import { ScrewJamGuide } from "@/components/screw-jam/screw-jam-guide";
+import { ScrewJamSolutions } from "@/components/screw-jam/screw-jam-solutions";
+import { ScrewJamSolver } from "@/components/screw-jam/screw-jam-solver";
+import { ScrewJamTips } from "@/components/screw-jam/screw-jam-tips";
 import {
   getAllGames,
   getGameBySlug,
@@ -91,6 +98,8 @@ export default async function GameDetailPage({ params }: GamePageProps) {
   ];
   const mostDiscussedLevels = mostSearchedLevels.slice(0, 4);
   const isColorWoodJam = game.slug === "color-wood-jam";
+  const isScrewJam = game.slug === "screw-jam";
+  const hasPremiumGameModules = isColorWoodJam || isScrewJam;
 
   return (
     <main className="container-page py-10">
@@ -192,6 +201,18 @@ export default async function GameDetailPage({ params }: GamePageProps) {
           <ColorWoodJamCompare />
           <ColorWoodJamCollections />
           <ColorWoodJamFaq faq={game.faq} />
+        </>
+      ) : null}
+
+      {isScrewJam ? (
+        <>
+          <ScrewJamGuide />
+          <ScrewJamTips />
+          <ScrewJamSolutions />
+          <ScrewJamSolver />
+          <ScrewJamCompare />
+          <ScrewJamCollections />
+          <ScrewJamFaq faq={game.faq} />
         </>
       ) : null}
 
@@ -367,7 +388,7 @@ export default async function GameDetailPage({ params }: GamePageProps) {
         </div>
       </section>
 
-      {!isColorWoodJam ? (
+      {!hasPremiumGameModules ? (
         <section className="mt-12 content-card p-6 sm:p-8">
           <SectionHeading title={`${game.name} FAQ`} />
           <div className="grid gap-4">

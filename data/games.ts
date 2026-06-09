@@ -750,6 +750,34 @@ export const colorWoodJamFaq = [
   }
 ];
 
+export const screwJamFaq = [
+  {
+    question: "How do I beat hard Screw Jam levels?",
+    answer:
+      "Check tray capacity first, then remove blockers before key screws so the board opens without filling every slot."
+  },
+  {
+    question: "What should I unscrew first?",
+    answer:
+      "Unscrew the piece that creates tray space or unlocks a blocker, not the screw that is easiest to remove visually."
+  },
+  {
+    question: "Why does my tray get stuck?",
+    answer:
+      "The tray usually gets stuck when colors are removed out of order or every empty slot is filled before the next match can clear."
+  },
+  {
+    question: "Are there multiple screw orders?",
+    answer:
+      "Yes. Many boards allow more than one screw order, but safer routes keep one tray slot open and delay mismatched screws."
+  },
+  {
+    question: "Can I use Solver?",
+    answer:
+      "Yes. Use the static Solver v2 preview on this page to follow tray capacity, blocker, screw order, and open-slot checks."
+  }
+];
+
 function gameFaq(spec: GameSpec) {
   const defaultFaq = [
     {
@@ -764,6 +792,10 @@ function gameFaq(spec: GameSpec) {
 
   if (spec.slug === "color-wood-jam") {
     return [...defaultFaq, ...colorWoodJamFaq];
+  }
+
+  if (spec.slug === "screw-jam") {
+    return [...defaultFaq, ...screwJamFaq];
   }
 
   return defaultFaq;
