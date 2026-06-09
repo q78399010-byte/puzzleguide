@@ -10,6 +10,13 @@ import { ColorWoodJamSolutions } from "@/components/color-wood-jam/color-wood-ja
 import { ColorWoodJamSolver } from "@/components/color-wood-jam/color-wood-jam-solver";
 import { ColorWoodJamTips } from "@/components/color-wood-jam/color-wood-jam-tips";
 import { GameGrid } from "@/components/game-grid";
+import { GoodsSortCollections } from "@/components/goods-sort/goods-sort-collections";
+import { GoodsSortCompare } from "@/components/goods-sort/goods-sort-compare";
+import { GoodsSortFaq } from "@/components/goods-sort/goods-sort-faq";
+import { GoodsSortGuide } from "@/components/goods-sort/goods-sort-guide";
+import { GoodsSortSolutions } from "@/components/goods-sort/goods-sort-solutions";
+import { GoodsSortSolver } from "@/components/goods-sort/goods-sort-solver";
+import { GoodsSortTips } from "@/components/goods-sort/goods-sort-tips";
 import { LevelList } from "@/components/level-list";
 import { SearchBox } from "@/components/search-box";
 import { SectionHeading } from "@/components/section-heading";
@@ -99,7 +106,8 @@ export default async function GameDetailPage({ params }: GamePageProps) {
   const mostDiscussedLevels = mostSearchedLevels.slice(0, 4);
   const isColorWoodJam = game.slug === "color-wood-jam";
   const isScrewJam = game.slug === "screw-jam";
-  const hasPremiumGameModules = isColorWoodJam || isScrewJam;
+  const isGoodsSort = game.slug === "goods-sort";
+  const hasPremiumGameModules = isColorWoodJam || isScrewJam || isGoodsSort;
 
   return (
     <main className="container-page py-10">
@@ -213,6 +221,18 @@ export default async function GameDetailPage({ params }: GamePageProps) {
           <ScrewJamCompare />
           <ScrewJamCollections />
           <ScrewJamFaq faq={game.faq} />
+        </>
+      ) : null}
+
+      {isGoodsSort ? (
+        <>
+          <GoodsSortGuide />
+          <GoodsSortTips />
+          <GoodsSortSolutions />
+          <GoodsSortSolver />
+          <GoodsSortCompare />
+          <GoodsSortCollections />
+          <GoodsSortFaq faq={game.faq} />
         </>
       ) : null}
 

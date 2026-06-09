@@ -778,6 +778,34 @@ export const screwJamFaq = [
   }
 ];
 
+export const goodsSortFaq = [
+  {
+    question: "How do I beat hard Goods Sort levels?",
+    answer:
+      "Open shelf space first, group the most crowded item type, and delay mixed shelves until a clean match is available."
+  },
+  {
+    question: "What should I sort first?",
+    answer:
+      "Sort the item group that frees the most shelf space, not the item that is easiest to move immediately."
+  },
+  {
+    question: "Why do shelves get stuck?",
+    answer:
+      "Shelves usually get stuck when mixed items fill every open lane before a matching group can clear."
+  },
+  {
+    question: "Are there multiple sorting orders?",
+    answer:
+      "Yes. Many Goods Sort boards allow more than one order, but safer routes keep one shelf lane open for temporary storage."
+  },
+  {
+    question: "Can I use Solver?",
+    answer:
+      "Yes. Use the static Solver v2 preview on this page to follow shelf space, item grouping, and cleanup checks."
+  }
+];
+
 function gameFaq(spec: GameSpec) {
   const defaultFaq = [
     {
@@ -796,6 +824,10 @@ function gameFaq(spec: GameSpec) {
 
   if (spec.slug === "screw-jam") {
     return [...defaultFaq, ...screwJamFaq];
+  }
+
+  if (spec.slug === "goods-sort") {
+    return [...defaultFaq, ...goodsSortFaq];
   }
 
   return defaultFaq;
