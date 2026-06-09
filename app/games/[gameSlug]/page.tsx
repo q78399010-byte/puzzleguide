@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AdSlot } from "@/components/ad-slot";
 import { Breadcrumb } from "@/components/breadcrumb";
+import { ColorWoodJamCollections } from "@/components/color-wood-jam/color-wood-jam-collections";
+import { ColorWoodJamCompare } from "@/components/color-wood-jam/color-wood-jam-compare";
+import { ColorWoodJamFaq } from "@/components/color-wood-jam/color-wood-jam-faq";
+import { ColorWoodJamGuide } from "@/components/color-wood-jam/color-wood-jam-guide";
+import { ColorWoodJamSolutions } from "@/components/color-wood-jam/color-wood-jam-solutions";
+import { ColorWoodJamSolver } from "@/components/color-wood-jam/color-wood-jam-solver";
+import { ColorWoodJamTips } from "@/components/color-wood-jam/color-wood-jam-tips";
 import { GameGrid } from "@/components/game-grid";
 import { LevelList } from "@/components/level-list";
 import { SearchBox } from "@/components/search-box";
@@ -83,6 +90,7 @@ export default async function GameDetailPage({ params }: GamePageProps) {
     "Use the closest related level when the exact layout feels similar."
   ];
   const mostDiscussedLevels = mostSearchedLevels.slice(0, 4);
+  const isColorWoodJam = game.slug === "color-wood-jam";
 
   return (
     <main className="container-page py-10">
@@ -174,6 +182,18 @@ export default async function GameDetailPage({ params }: GamePageProps) {
           </aside>
         </div>
       </section>
+
+      {isColorWoodJam ? (
+        <>
+          <ColorWoodJamGuide />
+          <ColorWoodJamTips />
+          <ColorWoodJamSolutions />
+          <ColorWoodJamSolver />
+          <ColorWoodJamCompare />
+          <ColorWoodJamCollections />
+          <ColorWoodJamFaq faq={game.faq} />
+        </>
+      ) : null}
 
       <section className="mt-12 grid gap-8 lg:grid-cols-[1fr_0.9fr]">
         <div>
@@ -347,19 +367,21 @@ export default async function GameDetailPage({ params }: GamePageProps) {
         </div>
       </section>
 
-      <section className="mt-12 content-card p-6 sm:p-8">
-        <SectionHeading title={`${game.name} FAQ`} />
-        <div className="grid gap-4">
-          {game.faq.map((item) => (
-            <details key={item.question} className="rounded-2xl border border-line p-4">
-              <summary className="cursor-pointer font-black text-ink">
-                {item.question}
-              </summary>
-              <p className="mt-3 text-sm leading-6 text-muted">{item.answer}</p>
-            </details>
-          ))}
-        </div>
-      </section>
+      {!isColorWoodJam ? (
+        <section className="mt-12 content-card p-6 sm:p-8">
+          <SectionHeading title={`${game.name} FAQ`} />
+          <div className="grid gap-4">
+            {game.faq.map((item) => (
+              <details key={item.question} className="rounded-2xl border border-line p-4">
+                <summary className="cursor-pointer font-black text-ink">
+                  {item.question}
+                </summary>
+                <p className="mt-3 text-sm leading-6 text-muted">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="mt-12">
         <SectionHeading

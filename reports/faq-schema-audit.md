@@ -2,13 +2,13 @@
 
 - Total Pages: 1422
 - Pages With FAQ: 1410
-- Pages With FAQ Schema: 1409
-- Pages Missing FAQ Schema: 1
+- Pages With FAQ Schema: 1410
+- Pages Missing FAQ Schema: 0
 - Invalid FAQ Items: 0
 
 ## Missing FAQ Schema Pages
 
-- / (homeFaq+profileFaq+freemiumFaq+videoFaq+communityFaq): FAQPage schema is missing 4 source question(s)
+None
 
 ## Invalid FAQ Items
 

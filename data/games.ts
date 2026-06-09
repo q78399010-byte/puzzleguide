@@ -722,6 +722,53 @@ const gameSpecs: GameSpec[] = [
   }
 ];
 
+export const colorWoodJamFaq = [
+  {
+    question: "How do I beat difficult levels?",
+    answer:
+      "Start by opening the center lane, then move the largest blockers before clearing small pieces that do not improve the exit path."
+  },
+  {
+    question: "What should I move first?",
+    answer:
+      "Move the piece that creates the most future space, not the piece that is easiest to clear immediately."
+  },
+  {
+    question: "What causes dead ends?",
+    answer:
+      "Dead ends usually happen when reserve space is filled too early or a blocker is moved before its exit lane is ready."
+  },
+  {
+    question: "Are there multiple solutions?",
+    answer:
+      "Yes. Many Color Wood Jam boards can be solved with more than one route, but the safest routes preserve space and delay risky moves."
+  },
+  {
+    question: "Can I use Solver?",
+    answer:
+      "Yes. Use the static Solver v2 preview on this page to follow a clean three-step pattern before checking full walkthroughs."
+  }
+];
+
+function gameFaq(spec: GameSpec) {
+  const defaultFaq = [
+    {
+      question: `How do I find ${spec.name} walkthroughs?`,
+      answer: `Search by exact level number or browse the ${spec.name} game hub for walkthroughs, solutions, level guides, and tips.`
+    },
+    {
+      question: `Is ${spec.name} good for beginners?`,
+      answer: `${spec.name} is rated ${spec.difficulty.toLowerCase()} on PuzzleMaster. Beginners should start with easier levels and use related walkthroughs when the board gets crowded.`
+    }
+  ];
+
+  if (spec.slug === "color-wood-jam") {
+    return [...defaultFaq, ...colorWoodJamFaq];
+  }
+
+  return defaultFaq;
+}
+
 export const games: Game[] = gameSpecs.map((spec) => {
   const category = categoryName(spec.categorySlug);
   const template = tipsByCategory[spec.categorySlug] ?? tipsByCategory.mechanical;
@@ -734,15 +781,6 @@ export const games: Game[] = gameSpecs.map((spec) => {
     beginnerTips: template.beginnerTips,
     advancedStrategy: template.advancedStrategy,
     commonMistakes: template.commonMistakes,
-    faq: [
-      {
-        question: `How do I find ${spec.name} walkthroughs?`,
-        answer: `Search by exact level number or browse the ${spec.name} game hub for walkthroughs, solutions, level guides, and tips.`
-      },
-      {
-        question: `Is ${spec.name} good for beginners?`,
-        answer: `${spec.name} is rated ${spec.difficulty.toLowerCase()} on PuzzleMaster. Beginners should start with easier levels and use related walkthroughs when the board gets crowded.`
-      }
-    ]
+    faq: gameFaq(spec)
   };
 });

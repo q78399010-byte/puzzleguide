@@ -1,15 +1,9 @@
 {
   "totalPages": 1422,
   "pagesWithFaq": 1410,
-  "pagesWithFaqSchema": 1409,
-  "pagesMissingFaqSchema": 1,
+  "pagesWithFaqSchema": 1410,
+  "pagesMissingFaqSchema": 0,
   "invalidFaqItems": 0,
-  "missingFaqSchemaPages": [
-    {
-      "route": "/",
-      "source": "homeFaq+profileFaq+freemiumFaq+videoFaq+communityFaq",
-      "reason": "FAQPage schema is missing 4 source question(s)"
-    }
-  ],
+  "missingFaqSchemaPages": [],
   "invalidFaqItemDetails": []
 }
