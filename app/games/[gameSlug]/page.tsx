@@ -29,6 +29,13 @@ import { ScrewJamGuide } from "@/components/screw-jam/screw-jam-guide";
 import { ScrewJamSolutions } from "@/components/screw-jam/screw-jam-solutions";
 import { ScrewJamSolver } from "@/components/screw-jam/screw-jam-solver";
 import { ScrewJamTips } from "@/components/screw-jam/screw-jam-tips";
+import { WaterSortCollections } from "@/components/water-sort/water-sort-collections";
+import { WaterSortCompare } from "@/components/water-sort/water-sort-compare";
+import { WaterSortFaq } from "@/components/water-sort/water-sort-faq";
+import { WaterSortGuide } from "@/components/water-sort/water-sort-guide";
+import { WaterSortSolutions } from "@/components/water-sort/water-sort-solutions";
+import { WaterSortSolver } from "@/components/water-sort/water-sort-solver";
+import { WaterSortTips } from "@/components/water-sort/water-sort-tips";
 import {
   getAllGames,
   getGameBySlug,
@@ -107,7 +114,9 @@ export default async function GameDetailPage({ params }: GamePageProps) {
   const isColorWoodJam = game.slug === "color-wood-jam";
   const isScrewJam = game.slug === "screw-jam";
   const isGoodsSort = game.slug === "goods-sort";
-  const hasPremiumGameModules = isColorWoodJam || isScrewJam || isGoodsSort;
+  const isWaterSort = game.slug === "water-sort";
+  const hasPremiumGameModules =
+    isColorWoodJam || isScrewJam || isGoodsSort || isWaterSort;
 
   return (
     <main className="container-page py-10">
@@ -233,6 +242,18 @@ export default async function GameDetailPage({ params }: GamePageProps) {
           <GoodsSortCompare />
           <GoodsSortCollections />
           <GoodsSortFaq faq={game.faq} />
+        </>
+      ) : null}
+
+      {isWaterSort ? (
+        <>
+          <WaterSortGuide />
+          <WaterSortTips />
+          <WaterSortSolutions />
+          <WaterSortSolver />
+          <WaterSortCompare />
+          <WaterSortCollections />
+          <WaterSortFaq faq={game.faq} />
         </>
       ) : null}
 

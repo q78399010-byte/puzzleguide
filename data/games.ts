@@ -806,6 +806,34 @@ export const goodsSortFaq = [
   }
 ];
 
+export const waterSortFaq = [
+  {
+    question: "How do I beat hard Water Sort levels?",
+    answer:
+      "Keep an empty bottle available, build one anchor color first, and avoid moving mixed layers without a clear destination."
+  },
+  {
+    question: "What color should I sort first?",
+    answer:
+      "Start with the color that already has the largest clean stack, because it creates the safest anchor for later pours."
+  },
+  {
+    question: "Why do bottles get stuck?",
+    answer:
+      "Bottles usually get stuck when every empty space is used too early or a rare color is split across too many bottles."
+  },
+  {
+    question: "Are there multiple pour orders?",
+    answer:
+      "Yes. Many Water Sort boards allow more than one pour order, but safer routes preserve one empty bottle for temporary storage."
+  },
+  {
+    question: "Can I use Solver?",
+    answer:
+      "Yes. Use the static Solver v2 preview on this page to follow empty bottle, anchor color, and final cleanup checks."
+  }
+];
+
 function gameFaq(spec: GameSpec) {
   const defaultFaq = [
     {
@@ -828,6 +856,10 @@ function gameFaq(spec: GameSpec) {
 
   if (spec.slug === "goods-sort") {
     return [...defaultFaq, ...goodsSortFaq];
+  }
+
+  if (spec.slug === "water-sort") {
+    return [...defaultFaq, ...waterSortFaq];
   }
 
   return defaultFaq;
