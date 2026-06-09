@@ -11,7 +11,9 @@
     "content:audit": "node scripts/content-audit.ts",
     "faq:audit": "node scripts/audit-faq-schema.ts",
     "media:checklist": "node scripts/generate-media-checklist.ts",
-    "start": "next start"
+    "start": "next start",
+    "video:audit": "node scripts/audit-video-matrix.ts",
+    "community:audit": "node scripts/audit-community.ts"
   },
   "dependencies": {
     "next": "^15.3.3",

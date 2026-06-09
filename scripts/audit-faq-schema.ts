@@ -297,7 +297,7 @@ function addExpectedPage(
 async function main() {
   registerProjectResolveHooks();
 
-  const [{ routes }, { homeFaq }, data, levelsData, topLevelContent, collectionsData, comparisonsData, guidesData, programmaticData, faqPages, profileData, freemiumData] =
+  const [{ routes }, { homeFaq }, data, levelsData, topLevelContent, collectionsData, comparisonsData, guidesData, programmaticData, faqPages, profileData, freemiumData, videoData, communityData] =
     await Promise.all([
       import("../lib/routes"),
       import("../components/home/home-data"),
@@ -310,7 +310,9 @@ async function main() {
       import("../data/programmatic"),
       import("../data/faq-pages"),
       import("../data/profile-data"),
-      import("../data/freemium-data")
+      import("../data/freemium-data"),
+      import("../data/video-data"),
+      import("../data/community-data")
     ]);
 
   const games = data.getAllGames();
@@ -319,8 +321,14 @@ async function main() {
   addExpectedPage(
     pages,
     routes.home,
-    "homeFaq+profileFaq+freemiumFaq",
-    [...homeFaq, ...profileData.profileFaq, ...freemiumData.freemiumFaq]
+    "homeFaq+profileFaq+freemiumFaq+videoFaq+communityFaq",
+    [
+      ...homeFaq,
+      ...profileData.profileFaq,
+      ...freemiumData.freemiumFaq,
+      ...videoData.videoFaq,
+      ...communityData.communityFaq
+    ]
   );
   games.forEach((game) => addExpectedPage(pages, routes.game(game.slug), "game.faq", game.faq));
   levelsData.levels.forEach((level) => {

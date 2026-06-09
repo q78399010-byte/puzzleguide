@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import { CommunityAchievements } from "@/components/community/community-achievements";
+import { CommunityCta } from "@/components/community/community-cta";
+import { CommunityFaq } from "@/components/community/community-faq";
+import { CommunityHero } from "@/components/community/community-hero";
+import { CommunityStats } from "@/components/community/community-stats";
+import { CommunityTopGames } from "@/components/community/community-top-games";
 import { FreemiumCta } from "@/components/freemium/freemium-cta";
 import { FreemiumFaq } from "@/components/freemium/freemium-faq";
 import { FreemiumFeatures } from "@/components/freemium/freemium-features";
@@ -20,9 +26,15 @@ import { ProfileTimeline } from "@/components/profile/profile-timeline";
 import { ProfileYearReview } from "@/components/profile/profile-year-review";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 import { FaqJsonLd } from "@/components/seo/faq-json-ld";
+import { VideoCta } from "@/components/video/video-cta";
+import { VideoFaq } from "@/components/video/video-faq";
+import { VideoList } from "@/components/video/video-list";
+import { VideoPreview } from "@/components/video/video-preview";
 import { homeFaq } from "@/components/home/home-data";
+import { communityFaq } from "@/data/community-data";
 import { freemiumFaq } from "@/data/freemium-data";
 import { popularProfiles, profileFaq, profileHero } from "@/data/profile-data";
+import { videoFaq } from "@/data/video-data";
 
 export const metadata: Metadata = {
   title: "PuzzleMaster | Puzzle Game Walkthroughs & Level Guides",
@@ -41,7 +53,13 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const homepageFaq = [...homeFaq, ...profileFaq, ...freemiumFaq];
+  const homepageFaq = [
+    ...homeFaq,
+    ...profileFaq,
+    ...freemiumFaq,
+    ...videoFaq,
+    ...communityFaq
+  ];
 
   return (
     <main className="overflow-hidden bg-[#fbfcff]">
@@ -151,6 +169,56 @@ export default function HomePage() {
 
           <div className="mt-8">
             <FreemiumCta />
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="video"
+        className="bg-[linear-gradient(180deg,#ffffff_0%,#f4f8ff_45%,#ffffff_100%)] py-24"
+      >
+        <div className="container-page">
+          <VideoPreview />
+
+          <div className="mt-8">
+            <VideoList />
+          </div>
+
+          <div className="mt-8">
+            <VideoFaq />
+          </div>
+
+          <div className="mt-8">
+            <VideoCta />
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="community"
+        className="bg-[linear-gradient(180deg,#ffffff_0%,#f3fbf8_44%,#ffffff_100%)] py-24"
+      >
+        <div className="container-page">
+          <CommunityHero />
+
+          <div className="mt-8">
+            <CommunityStats />
+          </div>
+
+          <div className="mt-8">
+            <CommunityTopGames />
+          </div>
+
+          <div className="mt-8">
+            <CommunityAchievements />
+          </div>
+
+          <div className="mt-8">
+            <CommunityFaq />
+          </div>
+
+          <div className="mt-8">
+            <CommunityCta />
           </div>
         </div>
       </section>
