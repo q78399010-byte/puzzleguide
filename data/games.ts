@@ -142,15 +142,15 @@ const gameSpecs: GameSpec[] = [
   },
   {
     slug: "arrows-go",
-    name: "Arrows GO",
+    name: "Arrow Away",
     categorySlug: "mechanical",
     description:
       "Trace arrow movement chains, unlock blocked routes, and solve direction-based puzzle boards.",
     shortDescription: "Direction and path-planning puzzle with arrow chain logic.",
     longDescription:
-      "Arrows GO focuses on direction planning. A single wrong release can block the board, so each guide highlights safe first moves, pressure points, and the order that keeps lanes open.",
+      "Arrow Away focuses on direction planning. A single wrong release can block the board, so each guide highlights safe first moves, pressure points, and the order that keeps lanes open.",
     seoIntro:
-      "Browse Arrows GO walkthroughs, level guide pages, solutions, and quick tips for arrow path puzzles.",
+      "Browse Arrow Away walkthroughs, level guide pages, solutions, and quick tips for arrow path puzzles.",
     difficulty: "Medium",
     totalLevels: 1200,
     guideCount: 350,
@@ -862,6 +862,34 @@ export const parkingJamFaq = [
   }
 ];
 
+export const arrowAwayFaq = [
+  {
+    question: "How do I solve hard Arrow Away levels?",
+    answer:
+      "Start with free arrows, clear the outer layer, and create movement space before removing blocked center arrows."
+  },
+  {
+    question: "Which arrow should I remove first?",
+    answer:
+      "Remove the arrow that already points into open space or unlocks several other arrows, not the arrow that only looks closest."
+  },
+  {
+    question: "Why do arrows become blocked?",
+    answer:
+      "Arrows become blocked when exits are closed too early or directional chains are removed before the surrounding layer has opened."
+  },
+  {
+    question: "Are there multiple solutions?",
+    answer:
+      "Yes. Many Arrow Away boards allow more than one solution, but safer routes remove free arrows first and preserve exit space."
+  },
+  {
+    question: "Can I use Solver?",
+    answer:
+      "Yes. Use the static Solver v2 preview on this page to follow free arrow, outer layer, movement space, and cleanup checks."
+  }
+];
+
 function gameFaq(spec: GameSpec) {
   const defaultFaq = [
     {
@@ -892,6 +920,10 @@ function gameFaq(spec: GameSpec) {
 
   if (spec.slug === "parking-jam") {
     return [...defaultFaq, ...parkingJamFaq];
+  }
+
+  if (spec.slug === "arrows-go" || spec.slug === "arrow-away") {
+    return [...defaultFaq, ...arrowAwayFaq];
   }
 
   return defaultFaq;

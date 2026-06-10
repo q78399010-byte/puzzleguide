@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AdSlot } from "@/components/ad-slot";
+import { ArrowAwayCollections } from "@/components/arrow-away/arrow-away-collections";
+import { ArrowAwayCompare } from "@/components/arrow-away/arrow-away-compare";
+import { ArrowAwayFaq } from "@/components/arrow-away/arrow-away-faq";
+import { ArrowAwayGuide } from "@/components/arrow-away/arrow-away-guide";
+import { ArrowAwaySolutions } from "@/components/arrow-away/arrow-away-solutions";
+import { ArrowAwaySolver } from "@/components/arrow-away/arrow-away-solver";
+import { ArrowAwayTips } from "@/components/arrow-away/arrow-away-tips";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { ColorWoodJamCollections } from "@/components/color-wood-jam/color-wood-jam-collections";
 import { ColorWoodJamCompare } from "@/components/color-wood-jam/color-wood-jam-compare";
@@ -123,8 +130,14 @@ export default async function GameDetailPage({ params }: GamePageProps) {
   const isGoodsSort = game.slug === "goods-sort";
   const isWaterSort = game.slug === "water-sort";
   const isParkingJam = game.slug === "parking-jam";
+  const isArrowAway = game.slug === "arrows-go";
   const hasPremiumGameModules =
-    isColorWoodJam || isScrewJam || isGoodsSort || isWaterSort || isParkingJam;
+    isColorWoodJam ||
+    isScrewJam ||
+    isGoodsSort ||
+    isWaterSort ||
+    isParkingJam ||
+    isArrowAway;
 
   return (
     <main className="container-page py-10">
@@ -274,6 +287,18 @@ export default async function GameDetailPage({ params }: GamePageProps) {
           <ParkingJamCompare />
           <ParkingJamCollections />
           <ParkingJamFaq faq={game.faq} />
+        </>
+      ) : null}
+
+      {isArrowAway ? (
+        <>
+          <ArrowAwayGuide />
+          <ArrowAwayTips />
+          <ArrowAwaySolutions />
+          <ArrowAwaySolver />
+          <ArrowAwayCompare />
+          <ArrowAwayCollections />
+          <ArrowAwayFaq faq={game.faq} />
         </>
       ) : null}
 
