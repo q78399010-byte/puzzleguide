@@ -918,6 +918,34 @@ export const hexaSortFaq = [
   }
 ];
 
+export const ballSortPuzzleFaq = [
+  {
+    question: "How do I solve hard Ball Sort levels?",
+    answer:
+      "Keep one tube empty, build one anchor color first, and avoid moving rare colors without a clear destination."
+  },
+  {
+    question: "Which ball color should I sort first?",
+    answer:
+      "Start with the color that already has the largest clean stack because it creates the safest anchor for later transfers."
+  },
+  {
+    question: "Why do Ball Sort tubes get stuck?",
+    answer:
+      "Tubes usually get stuck when every empty space is used too early or rare colors are split across too many tubes."
+  },
+  {
+    question: "Are there multiple transfer orders?",
+    answer:
+      "Yes. Many Ball Sort boards allow more than one transfer order, but safer routes preserve one empty tube for temporary storage."
+  },
+  {
+    question: "Can I use Solver?",
+    answer:
+      "Yes. Use the static Solver v2 preview on this page to follow empty tube, anchor color, rare color, and cleanup checks."
+  }
+];
+
 function gameFaq(spec: GameSpec) {
   const defaultFaq = [
     {
@@ -956,6 +984,10 @@ function gameFaq(spec: GameSpec) {
 
   if (spec.slug === "hexa-sort") {
     return [...defaultFaq, ...hexaSortFaq];
+  }
+
+  if (spec.slug === "ball-sort-puzzle") {
+    return [...defaultFaq, ...ballSortPuzzleFaq];
   }
 
   return defaultFaq;

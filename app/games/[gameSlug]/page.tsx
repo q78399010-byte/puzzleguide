@@ -8,6 +8,13 @@ import { ArrowAwayGuide } from "@/components/arrow-away/arrow-away-guide";
 import { ArrowAwaySolutions } from "@/components/arrow-away/arrow-away-solutions";
 import { ArrowAwaySolver } from "@/components/arrow-away/arrow-away-solver";
 import { ArrowAwayTips } from "@/components/arrow-away/arrow-away-tips";
+import { BallSortPuzzleCollections } from "@/components/ball-sort-puzzle/ball-sort-puzzle-collections";
+import { BallSortPuzzleCompare } from "@/components/ball-sort-puzzle/ball-sort-puzzle-compare";
+import { BallSortPuzzleFaq } from "@/components/ball-sort-puzzle/ball-sort-puzzle-faq";
+import { BallSortPuzzleGuide } from "@/components/ball-sort-puzzle/ball-sort-puzzle-guide";
+import { BallSortPuzzleSolutions } from "@/components/ball-sort-puzzle/ball-sort-puzzle-solutions";
+import { BallSortPuzzleSolver } from "@/components/ball-sort-puzzle/ball-sort-puzzle-solver";
+import { BallSortPuzzleTips } from "@/components/ball-sort-puzzle/ball-sort-puzzle-tips";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { ColorWoodJamCollections } from "@/components/color-wood-jam/color-wood-jam-collections";
 import { ColorWoodJamCompare } from "@/components/color-wood-jam/color-wood-jam-compare";
@@ -139,6 +146,7 @@ export default async function GameDetailPage({ params }: GamePageProps) {
   const isParkingJam = game.slug === "parking-jam";
   const isArrowAway = game.slug === "arrows-go";
   const isHexaSort = game.slug === "hexa-sort";
+  const isBallSortPuzzle = game.slug === "ball-sort-puzzle";
   const hasPremiumGameModules =
     isColorWoodJam ||
     isScrewJam ||
@@ -146,7 +154,8 @@ export default async function GameDetailPage({ params }: GamePageProps) {
     isWaterSort ||
     isParkingJam ||
     isArrowAway ||
-    isHexaSort;
+    isHexaSort ||
+    isBallSortPuzzle;
 
   return (
     <main className="container-page py-10">
@@ -320,6 +329,18 @@ export default async function GameDetailPage({ params }: GamePageProps) {
           <HexaSortCompare />
           <HexaSortCollections />
           <HexaSortFaq faq={game.faq} />
+        </>
+      ) : null}
+
+      {isBallSortPuzzle ? (
+        <>
+          <BallSortPuzzleGuide />
+          <BallSortPuzzleTips />
+          <BallSortPuzzleSolutions />
+          <BallSortPuzzleSolver />
+          <BallSortPuzzleCompare />
+          <BallSortPuzzleCollections />
+          <BallSortPuzzleFaq faq={game.faq} />
         </>
       ) : null}
 
