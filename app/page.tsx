@@ -16,6 +16,15 @@ import { HomeHero } from "@/components/home/home-hero";
 import { HomeHowItWorks } from "@/components/home/home-timeline";
 import { HomePopularGames } from "@/components/home/home-popular-games";
 import { HomeStats } from "@/components/home/home-stats";
+import { BoardPreview } from "@/components/block-blast-solver/board-preview";
+import { BestMoveCard } from "@/components/block-blast-solver/best-move-card";
+import { ComboCard } from "@/components/block-blast-solver/combo-card";
+import { DangerCard } from "@/components/block-blast-solver/danger-card";
+import { SolverCta } from "@/components/block-blast-solver/solver-cta";
+import { SolverFaq } from "@/components/block-blast-solver/solver-faq";
+import { SolverHero } from "@/components/block-blast-solver/solver-hero";
+import { StrategyCard } from "@/components/block-blast-solver/strategy-card";
+import { UploadCard } from "@/components/block-blast-solver/upload-card";
 import { ProfileBadges } from "@/components/profile/profile-badges";
 import { ProfileCard } from "@/components/profile/profile-card";
 import { ProfileFaq } from "@/components/profile/profile-faq";
@@ -74,6 +83,35 @@ export default function HomePage() {
       <HomeFeatureCards />
       <HomePopularGames />
       <HomeHowItWorks />
+
+      <section className="bg-[linear-gradient(180deg,#ffffff_0%,#f5f9ff_46%,#ffffff_100%)] py-24">
+        <div className="container-page">
+          <SolverHero />
+
+          <div className="mt-8">
+            <UploadCard />
+          </div>
+
+          <div className="mt-8">
+            <BoardPreview />
+          </div>
+
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            <BestMoveCard value="Clear left side first" />
+            <ComboCard value="72%" />
+            <DangerCard value="Low" />
+            <StrategyCard value="Create space in the center" />
+          </div>
+
+          <div className="mt-8">
+            <SolverFaq />
+          </div>
+
+          <div className="mt-8">
+            <SolverCta />
+          </div>
+        </div>
+      </section>
 
       <section
         id="profile"
