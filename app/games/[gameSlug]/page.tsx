@@ -24,6 +24,13 @@ import { GoodsSortGuide } from "@/components/goods-sort/goods-sort-guide";
 import { GoodsSortSolutions } from "@/components/goods-sort/goods-sort-solutions";
 import { GoodsSortSolver } from "@/components/goods-sort/goods-sort-solver";
 import { GoodsSortTips } from "@/components/goods-sort/goods-sort-tips";
+import { HexaSortCollections } from "@/components/hexa-sort/hexa-sort-collections";
+import { HexaSortCompare } from "@/components/hexa-sort/hexa-sort-compare";
+import { HexaSortFaq } from "@/components/hexa-sort/hexa-sort-faq";
+import { HexaSortGuide } from "@/components/hexa-sort/hexa-sort-guide";
+import { HexaSortSolutions } from "@/components/hexa-sort/hexa-sort-solutions";
+import { HexaSortSolver } from "@/components/hexa-sort/hexa-sort-solver";
+import { HexaSortTips } from "@/components/hexa-sort/hexa-sort-tips";
 import { LevelList } from "@/components/level-list";
 import { ParkingJamCollections } from "@/components/parking-jam/parking-jam-collections";
 import { ParkingJamCompare } from "@/components/parking-jam/parking-jam-compare";
@@ -131,13 +138,15 @@ export default async function GameDetailPage({ params }: GamePageProps) {
   const isWaterSort = game.slug === "water-sort";
   const isParkingJam = game.slug === "parking-jam";
   const isArrowAway = game.slug === "arrows-go";
+  const isHexaSort = game.slug === "hexa-sort";
   const hasPremiumGameModules =
     isColorWoodJam ||
     isScrewJam ||
     isGoodsSort ||
     isWaterSort ||
     isParkingJam ||
-    isArrowAway;
+    isArrowAway ||
+    isHexaSort;
 
   return (
     <main className="container-page py-10">
@@ -299,6 +308,18 @@ export default async function GameDetailPage({ params }: GamePageProps) {
           <ArrowAwayCompare />
           <ArrowAwayCollections />
           <ArrowAwayFaq faq={game.faq} />
+        </>
+      ) : null}
+
+      {isHexaSort ? (
+        <>
+          <HexaSortGuide />
+          <HexaSortTips />
+          <HexaSortSolutions />
+          <HexaSortSolver />
+          <HexaSortCompare />
+          <HexaSortCollections />
+          <HexaSortFaq faq={game.faq} />
         </>
       ) : null}
 

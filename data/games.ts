@@ -890,6 +890,34 @@ export const arrowAwayFaq = [
   }
 ];
 
+export const hexaSortFaq = [
+  {
+    question: "How do I solve hard Hexa Sort levels?",
+    answer:
+      "Build one clean anchor stack, keep board space open, and merge matching colors before isolated tiles trap the layout."
+  },
+  {
+    question: "Which hex tile should I place first?",
+    answer:
+      "Place the tile that extends a clean stack or creates a merge, not the tile that only fills the nearest open cell."
+  },
+  {
+    question: "Why do Hexa Sort boards get stuck?",
+    answer:
+      "Boards get stuck when mixed stacks fill every open space or isolated tiles block the final merge route."
+  },
+  {
+    question: "Are there multiple merge orders?",
+    answer:
+      "Yes. Many Hexa Sort boards allow more than one merge order, but safer routes preserve space and complete one color group at a time."
+  },
+  {
+    question: "Can I use Solver?",
+    answer:
+      "Yes. Use the static Solver v2 preview on this page to follow anchor stack, board space, merge timing, and cleanup checks."
+  }
+];
+
 function gameFaq(spec: GameSpec) {
   const defaultFaq = [
     {
@@ -924,6 +952,10 @@ function gameFaq(spec: GameSpec) {
 
   if (spec.slug === "arrows-go" || spec.slug === "arrow-away") {
     return [...defaultFaq, ...arrowAwayFaq];
+  }
+
+  if (spec.slug === "hexa-sort") {
+    return [...defaultFaq, ...hexaSortFaq];
   }
 
   return defaultFaq;
