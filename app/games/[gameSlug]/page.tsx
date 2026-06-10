@@ -8,6 +8,13 @@ import { ArrowAwayGuide } from "@/components/arrow-away/arrow-away-guide";
 import { ArrowAwaySolutions } from "@/components/arrow-away/arrow-away-solutions";
 import { ArrowAwaySolver } from "@/components/arrow-away/arrow-away-solver";
 import { ArrowAwayTips } from "@/components/arrow-away/arrow-away-tips";
+import { BlockBlastCollections } from "@/components/block-blast/block-blast-collections";
+import { BlockBlastCompare } from "@/components/block-blast/block-blast-compare";
+import { BlockBlastFaq } from "@/components/block-blast/block-blast-faq";
+import { BlockBlastGuide } from "@/components/block-blast/block-blast-guide";
+import { BlockBlastSolutions } from "@/components/block-blast/block-blast-solutions";
+import { BlockBlastSolver } from "@/components/block-blast/block-blast-solver";
+import { BlockBlastTips } from "@/components/block-blast/block-blast-tips";
 import { BallSortPuzzleCollections } from "@/components/ball-sort-puzzle/ball-sort-puzzle-collections";
 import { BallSortPuzzleCompare } from "@/components/ball-sort-puzzle/ball-sort-puzzle-compare";
 import { BallSortPuzzleFaq } from "@/components/ball-sort-puzzle/ball-sort-puzzle-faq";
@@ -147,6 +154,7 @@ export default async function GameDetailPage({ params }: GamePageProps) {
   const isArrowAway = game.slug === "arrows-go";
   const isHexaSort = game.slug === "hexa-sort";
   const isBallSortPuzzle = game.slug === "ball-sort-puzzle";
+  const isBlockBlast = game.slug === "block-blast";
   const hasPremiumGameModules =
     isColorWoodJam ||
     isScrewJam ||
@@ -155,7 +163,8 @@ export default async function GameDetailPage({ params }: GamePageProps) {
     isParkingJam ||
     isArrowAway ||
     isHexaSort ||
-    isBallSortPuzzle;
+    isBallSortPuzzle ||
+    isBlockBlast;
 
   return (
     <main className="container-page py-10">
@@ -341,6 +350,18 @@ export default async function GameDetailPage({ params }: GamePageProps) {
           <BallSortPuzzleCompare />
           <BallSortPuzzleCollections />
           <BallSortPuzzleFaq faq={game.faq} />
+        </>
+      ) : null}
+
+      {isBlockBlast ? (
+        <>
+          <BlockBlastGuide />
+          <BlockBlastTips />
+          <BlockBlastSolutions />
+          <BlockBlastSolver />
+          <BlockBlastCompare />
+          <BlockBlastCollections />
+          <BlockBlastFaq faq={game.faq} />
         </>
       ) : null}
 

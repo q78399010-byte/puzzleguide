@@ -946,6 +946,34 @@ export const ballSortPuzzleFaq = [
   }
 ];
 
+export const blockBlastFaq = [
+  {
+    question: "How do I solve hard Block Blast levels?",
+    answer:
+      "Keep the center open, clear rows before they clog the board, and avoid wasting space on awkward shapes too early."
+  },
+  {
+    question: "Which piece should I place first?",
+    answer:
+      "Place the piece that preserves the most future board space, not the piece that only gives the fastest immediate clear."
+  },
+  {
+    question: "Why do Block Blast boards get stuck?",
+    answer:
+      "Boards usually get stuck when the middle fills too early or when large shapes lose their safe landing area."
+  },
+  {
+    question: "Are there multiple placement orders?",
+    answer:
+      "Yes. Many Block Blast boards allow more than one placement order, but safer routes keep the center open and preserve combo space."
+  },
+  {
+    question: "Can I use Solver?",
+    answer:
+      "Yes. Use the static Solver v2 preview on this page to follow center space, row clears, corner safety, and combo checks."
+  }
+];
+
 function gameFaq(spec: GameSpec) {
   const defaultFaq = [
     {
@@ -988,6 +1016,10 @@ function gameFaq(spec: GameSpec) {
 
   if (spec.slug === "ball-sort-puzzle") {
     return [...defaultFaq, ...ballSortPuzzleFaq];
+  }
+
+  if (spec.slug === "block-blast") {
+    return [...defaultFaq, ...blockBlastFaq];
   }
 
   return defaultFaq;
