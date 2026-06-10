@@ -18,6 +18,13 @@ import { GoodsSortSolutions } from "@/components/goods-sort/goods-sort-solutions
 import { GoodsSortSolver } from "@/components/goods-sort/goods-sort-solver";
 import { GoodsSortTips } from "@/components/goods-sort/goods-sort-tips";
 import { LevelList } from "@/components/level-list";
+import { ParkingJamCollections } from "@/components/parking-jam/parking-jam-collections";
+import { ParkingJamCompare } from "@/components/parking-jam/parking-jam-compare";
+import { ParkingJamFaq } from "@/components/parking-jam/parking-jam-faq";
+import { ParkingJamGuide } from "@/components/parking-jam/parking-jam-guide";
+import { ParkingJamSolutions } from "@/components/parking-jam/parking-jam-solutions";
+import { ParkingJamSolver } from "@/components/parking-jam/parking-jam-solver";
+import { ParkingJamTips } from "@/components/parking-jam/parking-jam-tips";
 import { SearchBox } from "@/components/search-box";
 import { SectionHeading } from "@/components/section-heading";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
@@ -115,8 +122,9 @@ export default async function GameDetailPage({ params }: GamePageProps) {
   const isScrewJam = game.slug === "screw-jam";
   const isGoodsSort = game.slug === "goods-sort";
   const isWaterSort = game.slug === "water-sort";
+  const isParkingJam = game.slug === "parking-jam";
   const hasPremiumGameModules =
-    isColorWoodJam || isScrewJam || isGoodsSort || isWaterSort;
+    isColorWoodJam || isScrewJam || isGoodsSort || isWaterSort || isParkingJam;
 
   return (
     <main className="container-page py-10">
@@ -254,6 +262,18 @@ export default async function GameDetailPage({ params }: GamePageProps) {
           <WaterSortCompare />
           <WaterSortCollections />
           <WaterSortFaq faq={game.faq} />
+        </>
+      ) : null}
+
+      {isParkingJam ? (
+        <>
+          <ParkingJamGuide />
+          <ParkingJamTips />
+          <ParkingJamSolutions />
+          <ParkingJamSolver />
+          <ParkingJamCompare />
+          <ParkingJamCollections />
+          <ParkingJamFaq faq={game.faq} />
         </>
       ) : null}
 

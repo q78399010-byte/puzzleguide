@@ -834,6 +834,34 @@ export const waterSortFaq = [
   }
 ];
 
+export const parkingJamFaq = [
+  {
+    question: "How do I beat hard Parking Jam levels?",
+    answer:
+      "Clear the exit lane first, move blocking cars before short moves, and keep one empty space available for long vehicles."
+  },
+  {
+    question: "What car should I move first?",
+    answer:
+      "Move the car that opens the exit lane or frees multiple blocked cars, not the car that is easiest to slide immediately."
+  },
+  {
+    question: "Why do cars get trapped?",
+    answer:
+      "Cars get trapped when empty spaces are filled too early or long vehicles are moved before their escape path is open."
+  },
+  {
+    question: "Are there multiple exit orders?",
+    answer:
+      "Yes. Many Parking Jam lots allow more than one exit order, but safer routes clear blockers first and preserve escape paths."
+  },
+  {
+    question: "Can I use Solver?",
+    answer:
+      "Yes. Use the static Solver v2 preview on this page to follow exit lane, blocker, long vehicle, and final route checks."
+  }
+];
+
 function gameFaq(spec: GameSpec) {
   const defaultFaq = [
     {
@@ -860,6 +888,10 @@ function gameFaq(spec: GameSpec) {
 
   if (spec.slug === "water-sort") {
     return [...defaultFaq, ...waterSortFaq];
+  }
+
+  if (spec.slug === "parking-jam") {
+    return [...defaultFaq, ...parkingJamFaq];
   }
 
   return defaultFaq;
