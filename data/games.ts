@@ -798,6 +798,34 @@ export const screwJamFaq = [
   }
 ];
 
+export const magicSortFaq = [
+  {
+    question: "How do I beat hard Magic Sort levels?",
+    answer:
+      "Build one anchor color first, keep one storage space open, and avoid moving rare colors until they have a clear destination."
+  },
+  {
+    question: "Which color should I sort first?",
+    answer:
+      "Start with the color that already has the cleanest stack or the most direct merge, because it creates safer storage for later moves."
+  },
+  {
+    question: "Why do Magic Sort boards get stuck?",
+    answer:
+      "Boards usually get stuck when temporary storage fills too early or rare colors are split across too many containers."
+  },
+  {
+    question: "Are there multiple sorting orders?",
+    answer:
+      "Yes. Many Magic Sort boards allow more than one order, but safer routes preserve storage and finish one color group at a time."
+  },
+  {
+    question: "Can I use Solver?",
+    answer:
+      "Yes. Use the static Solver v2 preview on this page to follow anchor color, storage space, rare color, and cleanup checks."
+  }
+];
+
 export const goodsSortFaq = [
   {
     question: "How do I beat hard Goods Sort levels?",
@@ -1040,6 +1068,10 @@ function gameFaq(spec: GameSpec) {
 
   if (spec.slug === "screw-jam") {
     return [...defaultFaq, ...screwJamFaq];
+  }
+
+  if (spec.slug === "magic-sort") {
+    return [...defaultFaq, ...magicSortFaq];
   }
 
   if (spec.slug === "goods-sort") {

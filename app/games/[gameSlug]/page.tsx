@@ -50,6 +50,13 @@ import { HexaSortSolutions } from "@/components/hexa-sort/hexa-sort-solutions";
 import { HexaSortSolver } from "@/components/hexa-sort/hexa-sort-solver";
 import { HexaSortTips } from "@/components/hexa-sort/hexa-sort-tips";
 import { LevelList } from "@/components/level-list";
+import { MagicSortCollections } from "@/components/magic-sort/magic-sort-collections";
+import { MagicSortCompare } from "@/components/magic-sort/magic-sort-compare";
+import { MagicSortFaq } from "@/components/magic-sort/magic-sort-faq";
+import { MagicSortGuide } from "@/components/magic-sort/magic-sort-guide";
+import { MagicSortSolutions } from "@/components/magic-sort/magic-sort-solutions";
+import { MagicSortSolver } from "@/components/magic-sort/magic-sort-solver";
+import { MagicSortTips } from "@/components/magic-sort/magic-sort-tips";
 import { ParkingJamCollections } from "@/components/parking-jam/parking-jam-collections";
 import { ParkingJamCompare } from "@/components/parking-jam/parking-jam-compare";
 import { ParkingJamFaq } from "@/components/parking-jam/parking-jam-faq";
@@ -153,6 +160,7 @@ export default async function GameDetailPage({ params }: GamePageProps) {
   const mostDiscussedLevels = mostSearchedLevels.slice(0, 4);
   const isColorWoodJam = game.slug === "color-wood-jam";
   const isScrewJam = game.slug === "screw-jam";
+  const isMagicSort = game.slug === "magic-sort";
   const isGoodsSort = game.slug === "goods-sort";
   const isWaterSort = game.slug === "water-sort";
   const isParkingJam = game.slug === "parking-jam";
@@ -164,6 +172,7 @@ export default async function GameDetailPage({ params }: GamePageProps) {
   const hasPremiumGameModules =
     isColorWoodJam ||
     isScrewJam ||
+    isMagicSort ||
     isGoodsSort ||
     isWaterSort ||
     isParkingJam ||
@@ -285,6 +294,18 @@ export default async function GameDetailPage({ params }: GamePageProps) {
           <ScrewJamCompare />
           <ScrewJamCollections />
           <ScrewJamFaq faq={game.faq} />
+        </>
+      ) : null}
+
+      {isMagicSort ? (
+        <>
+          <MagicSortGuide />
+          <MagicSortTips />
+          <MagicSortSolutions />
+          <MagicSortSolver />
+          <MagicSortCompare />
+          <MagicSortCollections />
+          <MagicSortFaq faq={game.faq} />
         </>
       ) : null}
 
