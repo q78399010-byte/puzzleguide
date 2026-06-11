@@ -23,6 +23,10 @@ import { BallSortPuzzleSolutions } from "@/components/ball-sort-puzzle/ball-sort
 import { BallSortPuzzleSolver } from "@/components/ball-sort-puzzle/ball-sort-puzzle-solver";
 import { BallSortPuzzleTips } from "@/components/ball-sort-puzzle/ball-sort-puzzle-tips";
 import { Breadcrumb } from "@/components/breadcrumb";
+import { BusEscapeFaq } from "@/components/bus-escape/bus-escape-faq";
+import { BusEscapeGuide } from "@/components/bus-escape/bus-escape-guide";
+import { BusEscapeSolver } from "@/components/bus-escape/bus-escape-solver";
+import { BusEscapeTips } from "@/components/bus-escape/bus-escape-tips";
 import { ColorWoodJamCollections } from "@/components/color-wood-jam/color-wood-jam-collections";
 import { ColorWoodJamCompare } from "@/components/color-wood-jam/color-wood-jam-compare";
 import { ColorWoodJamFaq } from "@/components/color-wood-jam/color-wood-jam-faq";
@@ -122,13 +126,14 @@ export default async function GameDetailPage({ params }: GamePageProps) {
     .slice(0, 8);
   const mostSearchedLevels = getPopularLevels(8, game.slug);
   const relatedGames = getRelatedGames(game.slug, 3);
+  const levelCount = Math.max(gameLevels.length, 1);
   const difficultyDistribution = ["Easy", "Medium", "Hard", "Expert"].map((difficulty) => {
     const count = gameLevels.filter((level) => level.difficulty === difficulty).length;
 
     return {
       difficulty,
       count,
-      percent: Math.round((count / gameLevels.length) * 100)
+      percent: Math.round((count / levelCount) * 100)
     };
   });
   const popularSearchKeywords = [
@@ -155,6 +160,7 @@ export default async function GameDetailPage({ params }: GamePageProps) {
   const isHexaSort = game.slug === "hexa-sort";
   const isBallSortPuzzle = game.slug === "ball-sort-puzzle";
   const isBlockBlast = game.slug === "block-blast";
+  const isBusEscape = game.slug === "bus-escape";
   const hasPremiumGameModules =
     isColorWoodJam ||
     isScrewJam ||
@@ -164,7 +170,8 @@ export default async function GameDetailPage({ params }: GamePageProps) {
     isArrowAway ||
     isHexaSort ||
     isBallSortPuzzle ||
-    isBlockBlast;
+    isBlockBlast ||
+    isBusEscape;
 
   return (
     <main className="container-page py-10">
@@ -362,6 +369,15 @@ export default async function GameDetailPage({ params }: GamePageProps) {
           <BlockBlastCompare />
           <BlockBlastCollections />
           <BlockBlastFaq faq={game.faq} />
+        </>
+      ) : null}
+
+      {isBusEscape ? (
+        <>
+          <BusEscapeGuide />
+          <BusEscapeTips />
+          <BusEscapeSolver />
+          <BusEscapeFaq faq={game.faq} />
         </>
       ) : null}
 

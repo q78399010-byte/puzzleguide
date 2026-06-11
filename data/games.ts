@@ -321,6 +321,26 @@ const gameSpecs: GameSpec[] = [
     relatedGames: ["parking-jam", "traffic-escape", "jam-puzzle", "goods-sort"]
   },
   {
+    slug: "bus-escape",
+    name: "Bus Escape",
+    categorySlug: "mechanical",
+    description:
+      "Move buses through crowded traffic lanes, open exits, and solve blocked escape boards.",
+    shortDescription: "Bus traffic puzzle with exit lanes, blockers, and route planning.",
+    longDescription:
+      "Bus Escape turns each board into a tight traffic route puzzle. PuzzleMaster guides focus on opening the main bus lane, moving side blockers, and preserving enough empty space for the final escape sequence.",
+    seoIntro:
+      "Browse Bus Escape walkthroughs, bus puzzle solutions, level guide pages, and practical tips for difficult escape boards.",
+    difficulty: "Hard",
+    totalLevels: 1200,
+    guideCount: 260,
+    updatedAt: "2026-06-03",
+    popularity: 85,
+    color: "#2563eb",
+    tags: ["Bus", "Escape", "Traffic"],
+    relatedGames: ["parking-jam", "traffic-escape", "bus-jam", "jam-puzzle"]
+  },
+  {
     slug: "goods-sort",
     name: "Goods Sort",
     categorySlug: "sorting",
@@ -862,6 +882,34 @@ export const parkingJamFaq = [
   }
 ];
 
+export const busEscapeFaq = [
+  {
+    question: "How do I beat hard Bus Escape levels?",
+    answer:
+      "Open the main bus lane first, move side blockers before long buses, and keep one empty space available for the final escape route."
+  },
+  {
+    question: "Which bus should I move first?",
+    answer:
+      "Move the bus or blocker that opens the main exit lane, not the vehicle that only creates a short-term gap."
+  },
+  {
+    question: "Why do buses get trapped?",
+    answer:
+      "Buses get trapped when side lanes are filled too early or a long vehicle moves before its exit path has enough space."
+  },
+  {
+    question: "Are there multiple Bus Escape solutions?",
+    answer:
+      "Yes. Many boards allow more than one route, but safer solutions preserve one escape space and clear blockers before releasing long buses."
+  },
+  {
+    question: "Can I use Solver?",
+    answer:
+      "Yes. Use the static Solver v2 preview on this page to follow exit lane, side blocker, escape space, and bus order checks."
+  }
+];
+
 export const arrowAwayFaq = [
   {
     question: "How do I solve hard Arrow Away levels?",
@@ -1004,6 +1052,10 @@ function gameFaq(spec: GameSpec) {
 
   if (spec.slug === "parking-jam") {
     return [...defaultFaq, ...parkingJamFaq];
+  }
+
+  if (spec.slug === "bus-escape") {
+    return [...defaultFaq, ...busEscapeFaq];
   }
 
   if (spec.slug === "arrows-go" || spec.slug === "arrow-away") {
