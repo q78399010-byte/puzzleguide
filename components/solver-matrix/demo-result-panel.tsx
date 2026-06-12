@@ -31,9 +31,14 @@ export function DemoResultPanel({ preview, status }: DemoResultPanelProps) {
 
   return (
     <section className="mt-5 rounded-3xl border border-white/60 bg-white/80 p-5 shadow-lg shadow-slate-900/5">
-      <p className="text-xs font-bold uppercase tracking-[0.14em] text-action">
-        Suggested Strategy
-      </p>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="text-xs font-bold uppercase tracking-[0.14em] text-action">
+          Suggested Strategy
+        </p>
+        <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-bold text-action shadow-sm">
+          {status === "result" ? preview.animationLabel : "Static demo"}
+        </span>
+      </div>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         {details.map((detail) => (

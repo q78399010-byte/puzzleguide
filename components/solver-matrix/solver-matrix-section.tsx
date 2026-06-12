@@ -31,7 +31,7 @@ export function SolverMatrixSection() {
     timerRef.current = window.setTimeout(() => {
       setLoadingPreviewId(null);
       setResultPreviewId(previewId);
-    }, 750);
+    }, 1000);
   }
 
   return (

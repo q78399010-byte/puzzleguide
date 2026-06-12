@@ -10,6 +10,8 @@ export type SolverPreview = {
   solverName: string;
   gameName: string;
   boardRows: string[][];
+  highlightCells: Array<[number, number]>;
+  animationLabel: string;
   bestMove: string;
   comboChance: string;
   dangerLevel: string;
@@ -28,6 +30,12 @@ export const solverMatrixPreviews: SolverPreview[] = [
       ["", "", "D3", "D3"],
       ["E4", "", "", "E4"]
     ],
+    highlightCells: [
+      [0, 0],
+      [1, 2],
+      [1, 3]
+    ],
+    animationLabel: "Suggested placement",
     bestMove: "Clear left side first",
     comboChance: "72%",
     dangerLevel: "Low",
@@ -44,6 +52,11 @@ export const solverMatrixPreviews: SolverPreview[] = [
       ["", "G4", "P5", "P5"],
       ["Y3", "", "", "K6"]
     ],
+    highlightCells: [
+      [0, 0],
+      [1, 0]
+    ],
+    animationLabel: "Remove blocker first",
     bestMove: "Release R1 first",
     comboChance: "68%",
     dangerLevel: "Medium",
@@ -60,6 +73,12 @@ export const solverMatrixPreviews: SolverPreview[] = [
       ["B", "D", "D", ""],
       ["", "A", "B", "D"]
     ],
+    highlightCells: [
+      [0, 3],
+      [1, 2],
+      [1, 3]
+    ],
+    animationLabel: "Group matching items",
     bestMove: "Clear shelf C",
     comboChance: "74%",
     dangerLevel: "Low",
@@ -76,6 +95,11 @@ export const solverMatrixPreviews: SolverPreview[] = [
       ["Y", "R", "", "P"],
       ["Y", "B", "P", "G"]
     ],
+    highlightCells: [
+      [0, 3],
+      [1, 3]
+    ],
+    animationLabel: "Keep one bottle empty",
     bestMove: "Pour red to tube 4",
     comboChance: "61%",
     dangerLevel: "Medium",
@@ -92,6 +116,13 @@ export const solverMatrixPreviews: SolverPreview[] = [
       ["W", "", "S", "S"],
       ["", "G", "G", "X"]
     ],
+    highlightCells: [
+      [0, 2],
+      [1, 2],
+      [1, 3],
+      [3, 3]
+    ],
+    animationLabel: "Clear exit lane",
     bestMove: "Slide bus E down",
     comboChance: "57%",
     dangerLevel: "High",
@@ -108,6 +139,12 @@ export const solverMatrixPreviews: SolverPreview[] = [
       ["", "H3", "H4", ""],
       ["H5", "H5", "H1", "H4"]
     ],
+    highlightCells: [
+      [0, 0],
+      [1, 1],
+      [3, 2]
+    ],
+    animationLabel: "Match adjacent colors",
     bestMove: "Merge H1 stack",
     comboChance: "66%",
     dangerLevel: "Medium",

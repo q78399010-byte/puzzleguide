@@ -43,7 +43,7 @@ export function SolverPreviewCard({
         </span>
       </div>
 
-      <DemoBoard preview={preview} />
+      <DemoBoard preview={preview} status={status} />
       <div className="flex-1">
         <DemoResultPanel preview={preview} status={status} />
       </div>
