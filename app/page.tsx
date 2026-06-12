@@ -17,6 +17,7 @@ import { HomeHowItWorks } from "@/components/home/home-timeline";
 import { HomePopularGames } from "@/components/home/home-popular-games";
 import { HomeStats } from "@/components/home/home-stats";
 import { SolverMatrixSection } from "@/components/solver-matrix/solver-matrix-section";
+import { SolverProAdvancedSection } from "@/components/solver-pro-advanced/solver-pro-advanced-section";
 import { SolverProSection } from "@/components/solver-pro/solver-pro-section";
 import { ProfileBadges } from "@/components/profile/profile-badges";
 import { ProfileCard } from "@/components/profile/profile-card";
@@ -81,6 +82,7 @@ export default function HomePage() {
         <div className="container-page">
           <SolverMatrixSection />
           <SolverProSection />
+          <SolverProAdvancedSection />
         </div>
       </section>
 
