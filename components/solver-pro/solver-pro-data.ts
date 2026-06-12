@@ -9,6 +9,16 @@ export type SolverProFaqItem = {
   answer: string;
 };
 
+export type SolverProFeature = {
+  title: string;
+  description: string;
+};
+
+export type SolverProRoadmapItem = {
+  label: string;
+  status: "已完成" | "进行中" | "下一步" | "未来";
+};
+
 export const solverProCards: SolverProCard[] = [
   {
     title: "Screenshot Analysis",
@@ -46,6 +56,45 @@ export const solverProLockup = [
   "Static Demo",
   "No Account Needed",
   "AI Planned"
+];
+
+export const solverProFeatures: SolverProFeature[] = [
+  {
+    title: "Screenshot Preview",
+    description:
+      "Static preview for future screenshot-based puzzle analysis."
+  },
+  {
+    title: "Board State Detection",
+    description:
+      "Preview how board space, blockers, and risk states may be detected."
+  },
+  {
+    title: "Move Recommendation",
+    description: "Show suggested next moves using local demo data."
+  },
+  {
+    title: "Risk Scoring",
+    description:
+      "Highlight blocked lanes, low-space boards, and dead-end risk."
+  },
+  {
+    title: "Strategy Summary",
+    description:
+      "Turn board signals into readable step-by-step guidance."
+  },
+  {
+    title: "Solver Memory",
+    description:
+      "Preview recent analysis history and repeated puzzle patterns."
+  }
+];
+
+export const solverProRoadmap: SolverProRoadmapItem[] = [
+  { label: "Preview Demo", status: "已完成" },
+  { label: "Interactive Solver", status: "进行中" },
+  { label: "Advanced Planner", status: "下一步" },
+  { label: "AI-Assisted Tools", status: "未来" }
 ];
 
 export const solverProFaq: SolverProFaqItem[] = [

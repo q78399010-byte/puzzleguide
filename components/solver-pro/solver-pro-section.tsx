@@ -1,14 +1,31 @@
 import {
   solverProCards,
+  solverProFeatures,
   solverProFaq,
   solverProFlow,
-  solverProLockup
+  solverProLockup,
+  solverProRoadmap
 } from "@/components/solver-pro/solver-pro-data";
 import { SolverProCard } from "@/components/solver-pro/solver-pro-card";
+import { SolverProChangelog } from "@/components/solver-pro/solver-pro-changelog";
+import { SolverProComingSoon } from "@/components/solver-pro/solver-pro-coming-soon";
+import { SolverProComparisonTable } from "@/components/solver-pro/solver-pro-comparison-table";
 import { SolverProCta } from "@/components/solver-pro/solver-pro-cta";
+import { SolverProFeatureGrid } from "@/components/solver-pro/solver-pro-feature-grid";
 import { SolverProFaq } from "@/components/solver-pro/solver-pro-faq";
 import { SolverProFlow } from "@/components/solver-pro/solver-pro-flow";
+import { SolverProIntegrations } from "@/components/solver-pro/solver-pro-integrations";
 import { SolverProLockup } from "@/components/solver-pro/solver-pro-lockup";
+import { SolverProMetrics } from "@/components/solver-pro/solver-pro-metrics";
+import { SolverProPricingPreview } from "@/components/solver-pro/solver-pro-pricing-preview";
+import { SolverProReleaseRoadmap } from "@/components/solver-pro/solver-pro-release-roadmap";
+import { SolverProRoadmap } from "@/components/solver-pro/solver-pro-roadmap";
+import { SolverProSafetyNote } from "@/components/solver-pro/solver-pro-safety-note";
+import { SolverProStatusBoard } from "@/components/solver-pro/solver-pro-status-board";
+import { SolverProSupportedGames } from "@/components/solver-pro/solver-pro-supported-games";
+import { SolverProTestimonials } from "@/components/solver-pro/solver-pro-testimonials";
+import { SolverProUseCases } from "@/components/solver-pro/solver-pro-use-cases";
+import { SolverProVision } from "@/components/solver-pro/solver-pro-vision";
 import { SolverHistory } from "@/components/solver-pro/solver-history";
 import { SolverStats } from "@/components/solver-pro/solver-stats";
 
@@ -40,12 +57,42 @@ export function SolverProSection() {
         </div>
 
         <SolverProFlow steps={solverProFlow} />
+        <SolverProFeatureGrid features={solverProFeatures} />
+        <SolverProUseCases />
+        <SolverProSupportedGames />
+
+        <div className="mt-8 grid gap-5 xl:grid-cols-[0.95fr_1.05fr]">
+          <SolverProIntegrations />
+          <SolverProMetrics />
+        </div>
 
         <div className="mt-8 grid gap-5 xl:grid-cols-[1.05fr_0.95fr]">
           <SolverHistory />
           <SolverStats />
         </div>
 
+        <div className="mt-8 grid gap-5 xl:grid-cols-[0.95fr_1.05fr]">
+          <SolverProRoadmap items={solverProRoadmap} />
+          <SolverProSafetyNote />
+        </div>
+
+        <div className="mt-8 grid gap-5 xl:grid-cols-[1.05fr_0.95fr]">
+          <SolverProComparisonTable />
+          <SolverProTestimonials />
+        </div>
+
+        <SolverProVision />
+        <div className="mt-8 grid gap-5 xl:grid-cols-[0.8fr_1.2fr]">
+          <SolverProPricingPreview />
+          <SolverProStatusBoard />
+        </div>
+
+        <div className="mt-8 grid gap-5 xl:grid-cols-[1fr_1fr]">
+          <SolverProChangelog />
+          <SolverProReleaseRoadmap />
+        </div>
+
+        <SolverProComingSoon />
         <SolverProFaq faq={solverProFaq} />
         <SolverProCta />
       </div>
