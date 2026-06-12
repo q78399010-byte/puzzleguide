@@ -9,17 +9,21 @@ import type { SolverPreview } from "@/components/solver-matrix/solver-matrix-dat
 
 type SolverPreviewCardProps = {
   preview: SolverPreview;
-  isActive: boolean;
-  status: DemoStatus;
-  onTryPreview: () => void;
+  uploaded: boolean;
+  phase: DemoStatus;
+  onUpload: () => void;
+  onAnalyze: () => void;
 };
 
 export function SolverPreviewCard({
   preview,
-  isActive,
-  status,
-  onTryPreview
+  uploaded,
+  phase,
+  onUpload,
+  onAnalyze
 }: SolverPreviewCardProps) {
+  const isActive = phase !== "idle";
+
   return (
     <article
       className={[
@@ -50,15 +54,16 @@ export function SolverPreviewCard({
         </span>
       </div>
 
-      <DemoBoard preview={preview} status={status} />
+      <DemoBoard preview={preview} phase={phase} />
       <div className="flex-1">
-        <DemoResultPanel preview={preview} status={status} />
+        <DemoResultPanel preview={preview} status={phase} />
       </div>
       <DemoControlBar
         gameName={preview.gameName}
-        isActive={isActive}
-        isLoading={status === "loading"}
-        onTryPreview={onTryPreview}
+        phase={phase}
+        uploaded={uploaded}
+        onUpload={onUpload}
+        onAnalyze={onAnalyze}
       />
     </article>
   );

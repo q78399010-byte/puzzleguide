@@ -1,7 +1,16 @@
 import { AnimatedStepIndicator } from "@/components/solver-matrix/animated-step-indicator";
+import { PseudoAnalyzerStatus } from "@/components/solver-matrix/pseudo-analyzer-status";
+import { PseudoBoardSummary } from "@/components/solver-matrix/pseudo-board-summary";
 import type { SolverPreview } from "@/components/solver-matrix/solver-matrix-data";
 
-export type DemoStatus = "idle" | "loading" | "result";
+export type DemoStatus =
+  | "idle"
+  | "uploaded"
+  | "scanning"
+  | "detecting"
+  | "calculating"
+  | "preparing"
+  | "result";
 
 type DemoResultPanelProps = {
   preview: SolverPreview;
@@ -13,10 +22,15 @@ export function DemoResultPanel({ preview, status }: DemoResultPanelProps) {
     { label: "Best Move", value: preview.bestMove },
     { label: "Combo Chance", value: preview.comboChance },
     { label: "Danger Level", value: preview.dangerLevel },
-    { label: "Next Strategy", value: preview.nextStrategy }
+    { label: "Suggested Strategy", value: preview.nextStrategy }
   ];
 
   const hasResult = status === "result";
+  const isAnalyzing =
+    status === "scanning" ||
+    status === "detecting" ||
+    status === "calculating" ||
+    status === "preparing";
 
   return (
     <section className="mt-5 rounded-3xl border border-white/60 bg-white/80 p-5 shadow-lg shadow-slate-900/5">
@@ -25,28 +39,38 @@ export function DemoResultPanel({ preview, status }: DemoResultPanelProps) {
           Suggested Strategy
         </p>
         <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-bold text-action shadow-sm">
-          {hasResult ? preview.animationLabel : "Static demo"}
+          {hasResult ? preview.animationLabel : "Pseudo analyzer"}
         </span>
       </div>
 
-      {status === "loading" ? (
-        <div className="mt-4 flex items-center gap-3 rounded-3xl border border-sky-100 bg-sky-50/70 p-4 text-sm font-bold text-ink">
-          <span className="h-3 w-3 animate-pulse rounded-full bg-action shadow-lg shadow-blue-500/30" />
-          Analyzing board...
+      {status === "uploaded" ? (
+        <div className="mt-4 rounded-3xl border border-sky-100 bg-sky-50/70 p-4 text-sm font-bold text-ink">
+          Screenshot added locally. Ready to analyze.
         </div>
       ) : null}
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2">
-        {details.map((detail, index) => (
-          <AnimatedStepIndicator
-            key={detail.label}
-            label={detail.label}
-            value={detail.value}
-            status={status}
-            index={index}
-          />
-        ))}
-      </div>
+      {isAnalyzing ? <PseudoAnalyzerStatus phase={status} /> : null}
+
+      {hasResult ? (
+        <>
+          <PseudoBoardSummary preview={preview} />
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {details.map((detail, index) => (
+              <AnimatedStepIndicator
+                key={detail.label}
+                label={detail.label}
+                value={detail.value}
+                status={status}
+                index={index}
+              />
+            ))}
+          </div>
+        </>
+      ) : null}
+
+      <p className="mt-5 text-xs font-medium leading-5 text-muted">
+        Static preview. No real upload or AI analysis is performed.
+      </p>
     </section>
   );
 }

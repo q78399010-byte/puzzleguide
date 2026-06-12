@@ -6,7 +6,7 @@ import type { SolverPreview } from "@/components/solver-matrix/solver-matrix-dat
 
 type DemoBoardProps = {
   preview: SolverPreview;
-  status: DemoStatus;
+  phase: DemoStatus;
 };
 
 function isHighlighted(
@@ -20,18 +20,12 @@ function isHighlighted(
   );
 }
 
-function EmptyCell() {
-  return (
-    <div className="flex aspect-square items-center justify-center rounded-2xl border border-white/80 bg-white/70 shadow-sm" />
-  );
-}
-
 function BlockCell({ cell, isActive }: { cell: string; isActive: boolean }) {
   if (!cell) {
     return (
       <div className="flex aspect-square items-center justify-center rounded-2xl border border-dashed border-sky-200 bg-white/70 shadow-sm">
         {isActive ? (
-          <span className="h-8 w-8 rounded-xl bg-gradient-to-br from-action/30 to-violet-400/30 animate-pulse" />
+          <span className="h-8 w-8 animate-pulse rounded-xl bg-gradient-to-br from-action/30 to-violet-400/30" />
         ) : null}
       </div>
     );
@@ -120,7 +114,7 @@ function BusCell({ cell, isActive }: { cell: string; isActive: boolean }) {
     return (
       <div className="flex aspect-square items-center justify-center rounded-2xl border border-dashed border-sky-200 bg-white/70 shadow-sm">
         {isActive ? (
-          <span className="h-3 w-10 rounded-full bg-gradient-to-r from-action/40 to-mint/40 animate-pulse" />
+          <span className="h-3 w-10 animate-pulse rounded-full bg-gradient-to-r from-action/40 to-mint/40" />
         ) : null}
       </div>
     );
@@ -196,8 +190,13 @@ function BoardCell({
   return <BlockCell cell={cell} isActive={isActive} />;
 }
 
-export function DemoBoard({ preview, status }: DemoBoardProps) {
-  const showAnimation = status !== "idle";
+export function DemoBoard({ preview, phase }: DemoBoardProps) {
+  const showAnimation =
+    phase === "scanning" ||
+    phase === "detecting" ||
+    phase === "calculating" ||
+    phase === "preparing" ||
+    phase === "result";
 
   return (
     <section className="mt-5 rounded-3xl border border-sky-100 bg-sky-50/70 p-4 shadow-inner shadow-white/70">
@@ -206,7 +205,7 @@ export function DemoBoard({ preview, status }: DemoBoardProps) {
           Board Preview
         </p>
         <SolverAnimationBadge
-          label={preview.animationLabel}
+          label={phase === "uploaded" ? "Screenshot ready" : preview.animationLabel}
           isActive={showAnimation}
         />
       </div>
@@ -237,7 +236,7 @@ export function DemoBoard({ preview, status }: DemoBoardProps) {
             </div>
           ))}
         </div>
-        <AnimatedMovePath boardType={preview.boardType} status={status} />
+        <AnimatedMovePath boardType={preview.boardType} status={phase} />
       </div>
     </section>
   );

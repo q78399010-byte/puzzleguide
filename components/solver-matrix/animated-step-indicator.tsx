@@ -34,7 +34,7 @@ export function AnimatedStepIndicator({
   const isDanger = label === "Danger Level";
   const isNextStrategy = label === "Next Strategy";
   const hasResult = status === "result";
-  const isVisible = status !== "loading";
+  const isVisible = hasResult;
 
   return (
     <div

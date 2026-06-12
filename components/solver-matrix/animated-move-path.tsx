@@ -43,7 +43,12 @@ const pathStyles: Record<
 };
 
 export function AnimatedMovePath({ boardType, status }: AnimatedMovePathProps) {
-  const isVisible = status !== "idle";
+  const isVisible =
+    status === "scanning" ||
+    status === "detecting" ||
+    status === "calculating" ||
+    status === "preparing" ||
+    status === "result";
   const style = pathStyles[boardType];
 
   return (

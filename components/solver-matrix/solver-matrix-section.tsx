@@ -5,35 +5,92 @@ import { useEffect, useRef, useState } from "react";
 import { solverMatrixPreviews } from "@/components/solver-matrix/solver-matrix-data";
 import { SolverDisclaimer } from "@/components/solver-matrix/solver-disclaimer";
 import { SolverPreviewCard } from "@/components/solver-matrix/solver-preview-card";
+import type { DemoStatus } from "@/components/solver-matrix/demo-result-panel";
 import { SolverTrustRow } from "@/components/solver-matrix/solver-trust-row";
 
+type CardState = {
+  uploaded: boolean;
+  phase: DemoStatus;
+};
+
+const analysisSequence: Array<Exclude<DemoStatus, "idle" | "uploaded" | "result">> = [
+  "scanning",
+  "detecting",
+  "calculating",
+  "preparing"
+];
+
+function createInitialState() {
+  return Object.fromEntries(
+    solverMatrixPreviews.map((preview) => [
+      preview.id,
+      { uploaded: false, phase: "idle" as const }
+    ])
+  ) as Record<string, CardState>;
+}
+
 export function SolverMatrixSection() {
-  const [activePreviewId, setActivePreviewId] = useState<string | null>(null);
-  const [loadingPreviewId, setLoadingPreviewId] = useState<string | null>(null);
-  const [resultPreviewId, setResultPreviewId] = useState<string | null>(null);
-  const timerRef = useRef<number | null>(null);
+  const [cardState, setCardState] = useState<Record<string, CardState>>(
+    createInitialState
+  );
+  const timersRef = useRef<Record<string, number[]>>({});
 
   useEffect(() => {
     return () => {
-      if (timerRef.current) {
-        window.clearTimeout(timerRef.current);
-      }
+      Object.values(timersRef.current).forEach((timers) => {
+        timers.forEach((timer) => window.clearTimeout(timer));
+      });
     };
   }, []);
 
-  function handleTryPreview(previewId: string) {
-    if (timerRef.current) {
-      window.clearTimeout(timerRef.current);
+  function clearTimers(previewId: string) {
+    const timers = timersRef.current[previewId];
+    if (!timers) {
+      return;
     }
 
-    setActivePreviewId(previewId);
-    setLoadingPreviewId(previewId);
-    setResultPreviewId(null);
+    timers.forEach((timer) => window.clearTimeout(timer));
+    delete timersRef.current[previewId];
+  }
 
-    timerRef.current = window.setTimeout(() => {
-      setLoadingPreviewId(null);
-      setResultPreviewId(previewId);
-    }, 1000);
+  function setPhase(previewId: string, phase: DemoStatus) {
+    setCardState((current) => ({
+      ...current,
+      [previewId]: { ...current[previewId], phase }
+    }));
+  }
+
+  function handleUpload(previewId: string) {
+    clearTimers(previewId);
+    setCardState((current) => ({
+      ...current,
+      [previewId]: { uploaded: true, phase: "uploaded" }
+    }));
+  }
+
+  function handleAnalyze(previewId: string) {
+    clearTimers(previewId);
+    setPhase(previewId, "scanning");
+
+    const timers = analysisSequence.map((nextPhase, index) =>
+      window.setTimeout(() => {
+        setPhase(previewId, nextPhase);
+
+        if (index === analysisSequence.length - 1) {
+          const resultTimer = window.setTimeout(() => {
+            setPhase(previewId, "result");
+            delete timersRef.current[previewId];
+          }, 900);
+
+          timersRef.current[previewId] = [
+            ...(timersRef.current[previewId] ?? []),
+            resultTimer
+          ];
+        }
+      }, 1000 * (index + 1))
+    );
+
+    timersRef.current[previewId] = timers;
   }
 
   return (
@@ -54,25 +111,22 @@ export function SolverMatrixSection() {
           </p>
         </div>
 
-        <SolverTrustRow />
+        <div className="mt-8">
+          <SolverTrustRow />
+        </div>
 
         <div className="mt-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
           {solverMatrixPreviews.map((preview) => {
-            const isActive = activePreviewId === preview.id;
-            const status =
-              isActive && loadingPreviewId === preview.id
-                ? "loading"
-                : isActive && resultPreviewId === preview.id
-                  ? "result"
-                  : "idle";
+            const state = cardState[preview.id];
 
             return (
               <SolverPreviewCard
                 key={preview.id}
                 preview={preview}
-                isActive={isActive}
-                status={status}
-                onTryPreview={() => handleTryPreview(preview.id)}
+                uploaded={state.uploaded}
+                phase={state.phase}
+                onUpload={() => handleUpload(preview.id)}
+                onAnalyze={() => handleAnalyze(preview.id)}
               />
             );
           })}
