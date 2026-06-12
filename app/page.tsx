@@ -33,6 +33,7 @@ import { VideoCta } from "@/components/video/video-cta";
 import { VideoFaq } from "@/components/video/video-faq";
 import { VideoList } from "@/components/video/video-list";
 import { VideoPreview } from "@/components/video/video-preview";
+import { WorkspaceSection } from "@/components/workspace/workspace-section";
 import { homeFaq } from "@/components/home/home-data";
 import { communityFaq } from "@/data/community-data";
 import { freemiumFaq } from "@/data/freemium-data";
@@ -83,6 +84,7 @@ export default function HomePage() {
           <SolverMatrixSection />
           <SolverProSection />
           <SolverProAdvancedSection />
+          <WorkspaceSection />
         </div>
       </section>
 
