@@ -1,4 +1,5 @@
 import { AnimatedBoardCell } from "@/components/solver-matrix/animated-board-cell";
+import { AnimatedMovePath } from "@/components/solver-matrix/animated-move-path";
 import type { DemoStatus } from "@/components/solver-matrix/demo-result-panel";
 import { SolverAnimationBadge } from "@/components/solver-matrix/solver-animation-badge";
 import type { SolverPreview } from "@/components/solver-matrix/solver-matrix-data";
@@ -37,7 +38,12 @@ function BlockCell({ cell, isActive }: { cell: string; isActive: boolean }) {
   }
 
   return (
-    <div className="flex aspect-square items-center justify-center rounded-2xl border border-sky-200 bg-gradient-to-br from-sky-100 via-white to-violet-100 text-sm font-black text-ink shadow-sm">
+    <div
+      className={[
+        "flex aspect-square items-center justify-center rounded-2xl border border-sky-200 bg-gradient-to-br from-sky-100 via-white to-violet-100 text-sm font-black text-ink shadow-sm",
+        isActive ? "animate-pulse" : ""
+      ].join(" ")}
+    >
       <span className={isActive ? "animate-pulse" : ""}>{cell}</span>
     </div>
   );
@@ -57,7 +63,7 @@ function ScrewCell({ cell, isActive }: { cell: string; isActive: boolean }) {
       <span
         className={[
           "relative flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-action to-violet-500 text-[11px] font-black text-white shadow-lg shadow-blue-500/20",
-          isActive ? "animate-bounce" : ""
+          isActive ? "rotate-12 animate-pulse" : ""
         ].join(" ")}
       >
         <span className="absolute inset-2 rounded-full border border-white/55" />
@@ -76,7 +82,7 @@ function GoodsCell({ cell, isActive }: { cell: string; isActive: boolean }) {
         <span
           className={[
             "flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-sky-100 to-violet-100 text-sm font-black text-ink shadow-sm",
-            isActive ? "animate-pulse" : ""
+            isActive ? "translate-x-1 animate-pulse" : ""
           ].join(" ")}
         >
           {cell}
@@ -205,29 +211,33 @@ export function DemoBoard({ preview, status }: DemoBoardProps) {
         />
       </div>
 
-      <div className="mt-4 grid gap-2">
-        {preview.boardRows.map((row, rowIndex) => (
-          <div key={rowIndex} className="grid grid-cols-4 gap-2">
-            {row.map((cell, cellIndex) => {
-              const isCellActive =
-                showAnimation &&
-                isHighlighted(preview.highlightCells, rowIndex, cellIndex);
+      <div className="relative mt-4 overflow-hidden rounded-3xl">
+        <div className="relative z-10 grid gap-2">
+          {preview.boardRows.map((row, rowIndex) => (
+            <div key={rowIndex} className="grid grid-cols-4 gap-2">
+              {row.map((cell, cellIndex) => {
+                const isCellActive =
+                  showAnimation &&
+                  isHighlighted(preview.highlightCells, rowIndex, cellIndex);
 
-              return (
-                <AnimatedBoardCell
-                  key={`${rowIndex}-${cellIndex}`}
-                  isHighlighted={isCellActive}
-                >
-                  <BoardCell
-                    boardType={preview.boardType}
-                    cell={cell}
-                    isActive={isCellActive}
-                  />
-                </AnimatedBoardCell>
-              );
-            })}
-          </div>
-        ))}
+                return (
+                  <AnimatedBoardCell
+                    key={`${rowIndex}-${cellIndex}`}
+                    delayIndex={rowIndex + cellIndex}
+                    isHighlighted={isCellActive}
+                  >
+                    <BoardCell
+                      boardType={preview.boardType}
+                      cell={cell}
+                      isActive={isCellActive}
+                    />
+                  </AnimatedBoardCell>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+        <AnimatedMovePath boardType={preview.boardType} status={status} />
       </div>
     </section>
   );

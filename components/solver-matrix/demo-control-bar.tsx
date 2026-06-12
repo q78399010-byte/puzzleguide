@@ -25,7 +25,7 @@ export function DemoControlBar({
         onClick={onTryPreview}
         className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-action via-sky-500 to-mint px-6 text-sm font-bold text-white shadow-xl shadow-blue-500/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl disabled:translate-y-0 disabled:cursor-wait disabled:opacity-80"
       >
-        Try Preview
+        {isLoading ? "Analyzing..." : "Try Preview"}
       </button>
     </div>
   );

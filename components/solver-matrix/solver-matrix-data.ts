@@ -36,7 +36,7 @@ export const solverMatrixPreviews: SolverPreview[] = [
       [1, 3]
     ],
     animationLabel: "Suggested placement",
-    bestMove: "Clear left side first",
+    bestMove: "Clear center first",
     comboChance: "72%",
     dangerLevel: "Low",
     nextStrategy: "Create space in the center"
@@ -57,7 +57,7 @@ export const solverMatrixPreviews: SolverPreview[] = [
       [1, 0]
     ],
     animationLabel: "Remove blocker first",
-    bestMove: "Release R1 first",
+    bestMove: "Remove blocker first",
     comboChance: "68%",
     dangerLevel: "Medium",
     nextStrategy: "Hold one empty tray"
@@ -79,7 +79,7 @@ export const solverMatrixPreviews: SolverPreview[] = [
       [1, 3]
     ],
     animationLabel: "Group matching items",
-    bestMove: "Clear shelf C",
+    bestMove: "Group matching items",
     comboChance: "74%",
     dangerLevel: "Low",
     nextStrategy: "Group A items"
@@ -100,7 +100,7 @@ export const solverMatrixPreviews: SolverPreview[] = [
       [1, 3]
     ],
     animationLabel: "Keep one bottle empty",
-    bestMove: "Pour red to tube 4",
+    bestMove: "Keep one bottle empty",
     comboChance: "61%",
     dangerLevel: "Medium",
     nextStrategy: "Build red stack"
@@ -123,7 +123,7 @@ export const solverMatrixPreviews: SolverPreview[] = [
       [3, 3]
     ],
     animationLabel: "Clear exit lane",
-    bestMove: "Slide bus E down",
+    bestMove: "Clear exit lane",
     comboChance: "57%",
     dangerLevel: "High",
     nextStrategy: "Free center lane"
@@ -145,7 +145,7 @@ export const solverMatrixPreviews: SolverPreview[] = [
       [3, 2]
     ],
     animationLabel: "Match adjacent colors",
-    bestMove: "Merge H1 stack",
+    bestMove: "Match adjacent colors",
     comboChance: "66%",
     dangerLevel: "Medium",
     nextStrategy: "Anchor center"
