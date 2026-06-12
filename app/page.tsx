@@ -18,6 +18,8 @@ import { HomeHero } from "@/components/home/home-hero";
 import { HomeHowItWorks } from "@/components/home/home-timeline";
 import { HomePopularGames } from "@/components/home/home-popular-games";
 import { HomeStats } from "@/components/home/home-stats";
+import { InsightsCenterSection } from "@/components/insights-center/insights-center-section";
+import { IntelligenceCenterSection } from "@/components/intelligence-center/intelligence-center-section";
 import { SolverMatrixSection } from "@/components/solver-matrix/solver-matrix-section";
 import { SolverProAdvancedSection } from "@/components/solver-pro-advanced/solver-pro-advanced-section";
 import { SolverProSection } from "@/components/solver-pro/solver-pro-section";
@@ -89,6 +91,8 @@ export default function HomePage() {
           <WorkspaceSection />
           <DashboardSection />
           <CommandCenterSection />
+          <InsightsCenterSection />
+          <IntelligenceCenterSection />
         </div>
       </section>
 
