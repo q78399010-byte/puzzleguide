@@ -25,6 +25,11 @@ import { SolverFaq } from "@/components/block-blast-solver/solver-faq";
 import { SolverHero } from "@/components/block-blast-solver/solver-hero";
 import { StrategyCard } from "@/components/block-blast-solver/strategy-card";
 import { UploadCard } from "@/components/block-blast-solver/upload-card";
+import { BusEscapeSolverPreview } from "@/components/solver-matrix/bus-escape-solver-preview";
+import { GoodsSortSolverPreview } from "@/components/solver-matrix/goods-sort-solver-preview";
+import { HexaSortSolverPreview } from "@/components/solver-matrix/hexa-sort-solver-preview";
+import { ScrewJamSolverPreview } from "@/components/solver-matrix/screw-jam-solver-preview";
+import { WaterSortSolverPreview } from "@/components/solver-matrix/water-sort-solver-preview";
 import { ProfileBadges } from "@/components/profile/profile-badges";
 import { ProfileCard } from "@/components/profile/profile-card";
 import { ProfileFaq } from "@/components/profile/profile-faq";
@@ -110,6 +115,31 @@ export default function HomePage() {
           <div className="mt-8">
             <SolverCta />
           </div>
+
+          <section className="mt-12">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-action">
+                  Solver Matrix
+                </p>
+                <h2 className="mt-4 text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+                  More static solver previews
+                </h2>
+              </div>
+              <p className="max-w-xl text-sm leading-6 text-muted sm:text-base sm:leading-7">
+                Five homepage-ready previews using static board states, mock
+                move guidance, and responsive cards.
+              </p>
+            </div>
+
+            <div className="mt-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
+              <ScrewJamSolverPreview />
+              <GoodsSortSolverPreview />
+              <WaterSortSolverPreview />
+              <BusEscapeSolverPreview />
+              <HexaSortSolverPreview />
+            </div>
+          </section>
         </div>
       </section>
 
