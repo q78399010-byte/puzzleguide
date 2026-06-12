@@ -5,6 +5,7 @@ import { CommunityFaq } from "@/components/community/community-faq";
 import { CommunityHero } from "@/components/community/community-hero";
 import { CommunityStats } from "@/components/community/community-stats";
 import { CommunityTopGames } from "@/components/community/community-top-games";
+import { DashboardSection } from "@/components/dashboard/dashboard-section";
 import { FreemiumCta } from "@/components/freemium/freemium-cta";
 import { FreemiumFaq } from "@/components/freemium/freemium-faq";
 import { FreemiumFeatures } from "@/components/freemium/freemium-features";
@@ -85,6 +86,7 @@ export default function HomePage() {
           <SolverProSection />
           <SolverProAdvancedSection />
           <WorkspaceSection />
+          <DashboardSection />
         </div>
       </section>
 
