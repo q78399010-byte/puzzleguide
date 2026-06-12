@@ -12,6 +12,7 @@ export type SolverPreview = {
   boardRows: string[][];
   highlightCells: Array<[number, number]>;
   animationLabel: string;
+  featurePills: string[];
   bestMove: string;
   comboChance: string;
   dangerLevel: string;
@@ -36,6 +37,7 @@ export const solverMatrixPreviews: SolverPreview[] = [
       [1, 3]
     ],
     animationLabel: "Suggested placement",
+    featurePills: ["Grid strategy", "Combo planning", "Space control"],
     bestMove: "Clear center first",
     comboChance: "72%",
     dangerLevel: "Low",
@@ -57,6 +59,7 @@ export const solverMatrixPreviews: SolverPreview[] = [
       [1, 0]
     ],
     animationLabel: "Remove blocker first",
+    featurePills: ["Screw order", "Tray planning", "Blocker removal"],
     bestMove: "Remove blocker first",
     comboChance: "68%",
     dangerLevel: "Medium",
@@ -79,6 +82,7 @@ export const solverMatrixPreviews: SolverPreview[] = [
       [1, 3]
     ],
     animationLabel: "Group matching items",
+    featurePills: ["Shelf grouping", "Item matching", "Route planning"],
     bestMove: "Group matching items",
     comboChance: "74%",
     dangerLevel: "Low",
@@ -100,6 +104,7 @@ export const solverMatrixPreviews: SolverPreview[] = [
       [1, 3]
     ],
     animationLabel: "Keep one bottle empty",
+    featurePills: ["Bottle space", "Color grouping", "Safe pours"],
     bestMove: "Keep one bottle empty",
     comboChance: "61%",
     dangerLevel: "Medium",
@@ -123,6 +128,7 @@ export const solverMatrixPreviews: SolverPreview[] = [
       [3, 3]
     ],
     animationLabel: "Clear exit lane",
+    featurePills: ["Exit route", "Lane clearing", "Vehicle order"],
     bestMove: "Clear exit lane",
     comboChance: "57%",
     dangerLevel: "High",
@@ -145,6 +151,7 @@ export const solverMatrixPreviews: SolverPreview[] = [
       [3, 2]
     ],
     animationLabel: "Match adjacent colors",
+    featurePills: ["Color matching", "Adjacent planning", "Chain moves"],
     bestMove: "Match adjacent colors",
     comboChance: "66%",
     dangerLevel: "Medium",

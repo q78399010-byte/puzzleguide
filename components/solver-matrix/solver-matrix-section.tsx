@@ -3,7 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 
 import { solverMatrixPreviews } from "@/components/solver-matrix/solver-matrix-data";
+import { SolverDisclaimer } from "@/components/solver-matrix/solver-disclaimer";
 import { SolverPreviewCard } from "@/components/solver-matrix/solver-preview-card";
+import { SolverTrustRow } from "@/components/solver-matrix/solver-trust-row";
 
 export function SolverMatrixSection() {
   const [activePreviewId, setActivePreviewId] = useState<string | null>(null);
@@ -52,6 +54,8 @@ export function SolverMatrixSection() {
           </p>
         </div>
 
+        <SolverTrustRow />
+
         <div className="mt-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
           {solverMatrixPreviews.map((preview) => {
             const isActive = activePreviewId === preview.id;
@@ -73,6 +77,8 @@ export function SolverMatrixSection() {
             );
           })}
         </div>
+
+        <SolverDisclaimer />
       </div>
     </section>
   );
