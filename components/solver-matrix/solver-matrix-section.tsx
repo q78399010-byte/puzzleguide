@@ -1,7 +1,39 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 import { solverMatrixPreviews } from "@/components/solver-matrix/solver-matrix-data";
 import { SolverPreviewCard } from "@/components/solver-matrix/solver-preview-card";
 
 export function SolverMatrixSection() {
+  const [activePreviewId, setActivePreviewId] = useState<string | null>(null);
+  const [loadingPreviewId, setLoadingPreviewId] = useState<string | null>(null);
+  const [resultPreviewId, setResultPreviewId] = useState<string | null>(null);
+  const timerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        window.clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
+
+  function handleTryPreview(previewId: string) {
+    if (timerRef.current) {
+      window.clearTimeout(timerRef.current);
+    }
+
+    setActivePreviewId(previewId);
+    setLoadingPreviewId(previewId);
+    setResultPreviewId(null);
+
+    timerRef.current = window.setTimeout(() => {
+      setLoadingPreviewId(null);
+      setResultPreviewId(previewId);
+    }, 750);
+  }
+
   return (
     <section id="solver-matrix">
       <div className="rounded-3xl border border-white/55 bg-white/75 p-6 shadow-xl shadow-slate-900/5 backdrop-blur-xl sm:p-8 lg:p-10">
@@ -21,9 +53,25 @@ export function SolverMatrixSection() {
         </div>
 
         <div className="mt-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
-          {solverMatrixPreviews.map((preview) => (
-            <SolverPreviewCard key={preview.gameName} preview={preview} />
-          ))}
+          {solverMatrixPreviews.map((preview) => {
+            const isActive = activePreviewId === preview.id;
+            const status =
+              isActive && loadingPreviewId === preview.id
+                ? "loading"
+                : isActive && resultPreviewId === preview.id
+                  ? "result"
+                  : "idle";
+
+            return (
+              <SolverPreviewCard
+                key={preview.id}
+                preview={preview}
+                isActive={isActive}
+                status={status}
+                onTryPreview={() => handleTryPreview(preview.id)}
+              />
+            );
+          })}
         </div>
       </div>
     </section>

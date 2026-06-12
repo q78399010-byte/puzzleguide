@@ -1,4 +1,12 @@
 export type SolverPreview = {
+  id: string;
+  boardType:
+    | "block-blast"
+    | "screw-jam"
+    | "goods-sort"
+    | "water-sort"
+    | "bus-escape"
+    | "hexa-sort";
   solverName: string;
   gameName: string;
   boardRows: string[][];
@@ -10,6 +18,8 @@ export type SolverPreview = {
 
 export const solverMatrixPreviews: SolverPreview[] = [
   {
+    id: "block-blast",
+    boardType: "block-blast",
     solverName: "Block Blast Solver Preview",
     gameName: "Block Blast",
     boardRows: [
@@ -24,6 +34,8 @@ export const solverMatrixPreviews: SolverPreview[] = [
     nextStrategy: "Create space in the center"
   },
   {
+    id: "screw-jam",
+    boardType: "screw-jam",
     solverName: "Screw Jam Solver Preview",
     gameName: "Screw Jam",
     boardRows: [
@@ -38,6 +50,8 @@ export const solverMatrixPreviews: SolverPreview[] = [
     nextStrategy: "Hold one empty tray"
   },
   {
+    id: "goods-sort",
+    boardType: "goods-sort",
     solverName: "Goods Sort Solver Preview",
     gameName: "Goods Sort",
     boardRows: [
@@ -52,6 +66,8 @@ export const solverMatrixPreviews: SolverPreview[] = [
     nextStrategy: "Group A items"
   },
   {
+    id: "water-sort",
+    boardType: "water-sort",
     solverName: "Water Sort Solver Preview",
     gameName: "Water Sort",
     boardRows: [
@@ -66,6 +82,8 @@ export const solverMatrixPreviews: SolverPreview[] = [
     nextStrategy: "Build red stack"
   },
   {
+    id: "bus-escape",
+    boardType: "bus-escape",
     solverName: "Bus Escape Solver Preview",
     gameName: "Bus Escape",
     boardRows: [
@@ -80,6 +98,8 @@ export const solverMatrixPreviews: SolverPreview[] = [
     nextStrategy: "Free center lane"
   },
   {
+    id: "hexa-sort",
+    boardType: "hexa-sort",
     solverName: "Hexa Sort Solver Preview",
     gameName: "Hexa Sort",
     boardRows: [
