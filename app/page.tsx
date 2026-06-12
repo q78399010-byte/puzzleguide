@@ -17,6 +17,7 @@ import { HomeHowItWorks } from "@/components/home/home-timeline";
 import { HomePopularGames } from "@/components/home/home-popular-games";
 import { HomeStats } from "@/components/home/home-stats";
 import { SolverMatrixSection } from "@/components/solver-matrix/solver-matrix-section";
+import { SolverProSection } from "@/components/solver-pro/solver-pro-section";
 import { ProfileBadges } from "@/components/profile/profile-badges";
 import { ProfileCard } from "@/components/profile/profile-card";
 import { ProfileFaq } from "@/components/profile/profile-faq";
@@ -79,6 +80,7 @@ export default function HomePage() {
       <section className="bg-[linear-gradient(180deg,#ffffff_0%,#f5f9ff_46%,#ffffff_100%)] py-24">
         <div className="container-page">
           <SolverMatrixSection />
+          <SolverProSection />
         </div>
       </section>
 
